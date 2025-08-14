@@ -17,7 +17,15 @@ import {
   Hash,
   Star,
   Shield,
-  Truck
+  Truck,
+  Heart,
+  Share2,
+  ChevronDown,
+  ChevronRight,
+  Award,
+  Clock,
+  Zap,
+  StarHalf
 } from "lucide-react";
 
 export default function ViewProduct() {
@@ -27,6 +35,9 @@ export default function ViewProduct() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [imageLoading, setImageLoading] = useState(true);
+  const [selectedTab, setSelectedTab] = useState("description");
+  const [showFullDescription, setShowFullDescription] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -51,14 +62,21 @@ export default function ViewProduct() {
     fetchProduct();
   }, [id]);
 
+  const handleQuantityChange = (amount) => {
+    const newQuantity = quantity + amount;
+    if (newQuantity >= 1 && newQuantity <= (product?.quantity || 10)) {
+      setQuantity(newQuantity);
+    }
+  };
+
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen bg-gray-50">
         <Navbar />
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
-            <div className="w-16 h-16 border-4 border-red-500/30 border-t-red-500 rounded-full animate-spin mx-auto mb-4"></div>
-            <p className="text-gray-400 text-lg">Loading product details...</p>
+            <div className="w-16 h-16 border-4 border-red-500/30 border-t-red-600 rounded-full animate-spin mx-auto mb-4"></div>
+            <p className="text-gray-500 text-lg">Loading product details...</p>
           </div>
         </div>
         <Footer />
@@ -68,16 +86,16 @@ export default function ViewProduct() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen bg-gray-50">
         <Navbar />
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center max-w-md">
             <XCircle className="w-24 h-24 text-red-500 mx-auto mb-6" />
-            <h2 className="text-2xl font-bold text-white mb-4">Product Not Found</h2>
-            <p className="text-gray-400 mb-6">{error}</p>
+            <h2 className="text-2xl font-medium text-gray-800 mb-4">Product Not Found</h2>
+            <p className="text-gray-500 mb-6">{error}</p>
             <Link
               to="/products"
-              className="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 inline-flex items-center gap-2"
+              className="bg-red-600 hover:bg-red-700 text-white font-medium px-6 py-3 rounded-md transition-colors duration-200 inline-flex items-center gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Products
@@ -90,198 +108,261 @@ export default function ViewProduct() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-gray-50 text-gray-900">
       <Navbar />
       
       {/* Breadcrumb */}
-      <div className="pt-20 pb-4 bg-gradient-to-r from-black via-gray-900 to-black border-b border-red-500/20">
-        <div className="max-w-7xl mx-auto px-6">
-          <Link
-            to="/products"
-            className="inline-flex items-center text-gray-400 hover:text-red-400 transition-colors duration-300 font-semibold"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Products
-          </Link>
+      <div className="pt-20 pb-4 bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="py-3">
+            <nav className="text-sm text-gray-600 mb-4">
+              <span className="hover:text-red-600 cursor-pointer">Home</span>
+              <span className="mx-2">›</span>
+              <Link to="/products" className="hover:text-red-600 cursor-pointer">All Products</Link>
+              <span className="mx-2">›</span>
+              {product.category && (
+                <>
+                  <span className="hover:text-red-600 cursor-pointer">{product.category}</span>
+                  <span className="mx-2">›</span>
+                </>
+              )}
+              <span className="text-gray-900 font-medium">{product.name}</span>
+            </nav>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Product Image */}
-          <div className="relative">
-            <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-black border border-gray-800">
-              {product.imageUrl ? (
-                <div className="relative w-full h-full">
+      <div className="max-w-7xl mx-auto px-4 py-6">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Left Column - Images */}
+          <div className="lg:w-2/5">
+            <div className="sticky top-24">
+              <div className="bg-white border border-gray-200 rounded-lg p-6 mb-4">
+                <div className="relative">
                   {imageLoading && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-gray-900">
-                      <div className="w-8 h-8 border-2 border-red-500/30 border-t-red-500 rounded-full animate-spin"></div>
+                    <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+                      <div className="w-8 h-8 border-2 border-red-500/30 border-t-red-600 rounded-full animate-spin"></div>
                     </div>
                   )}
-                  <img
-                    src={product.imageUrl}
-                    alt={product.name}
-                    className="w-full h-full object-cover transition-opacity duration-300"
-                    style={{ opacity: imageLoading ? 0 : 1 }}
-                    onLoad={() => setImageLoading(false)}
-                    onError={() => setImageLoading(false)}
-                  />
-                </div>
-              ) : (
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="text-center">
-                    <Package className="w-24 h-24 text-gray-600 mx-auto mb-4" />
-                    <p className="text-gray-500 font-medium">No Image Available</p>
+                  {product.imageUrl ? (
+                    <img
+                      src={product.imageUrl}
+                      alt={product.name}
+                      className="w-full h-full object-contain aspect-square transition-opacity duration-300"
+                      style={{ opacity: imageLoading ? 0 : 1 }}
+                      onLoad={() => setImageLoading(false)}
+                      onError={() => setImageLoading(false)}
+                    />
+                  ) : (
+                    <div className="w-full aspect-square flex items-center justify-center bg-gray-100 rounded">
+                      <Package className="w-24 h-24 text-gray-300" />
+                    </div>
+                  )}
+                  
+                  {/* Availability Badge */}
+                  <div className="absolute top-4 right-4">
+                    <div className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium ${
+                      product.availability 
+                        ? 'bg-green-100 text-green-800' 
+                        : 'bg-red-100 text-red-800'
+                    }`}>
+                      {product.availability ? (
+                        <>
+                          <CheckCircle className="w-3 h-3" />
+                          In Stock
+                        </>
+                      ) : (
+                        <>
+                          <XCircle className="w-3 h-3" />
+                          Out of Stock
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
-              )}
+                
+                {/* Thumbnail Gallery (mock) */}
+                <div className="flex gap-2 mt-4">
+                
+                </div>
+              </div>
+              
+           
             </div>
-            
-            {/* Availability Badge */}
-            <div className="absolute top-6 right-6">
-              <div className={`flex items-center gap-2 px-4 py-2 rounded-full font-semibold text-sm ${
-                product.availability 
-                  ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
-                  : 'bg-red-500/20 text-red-400 border border-red-500/30'
-              }`}>
-                {product.availability ? (
+          </div>
+          
+          {/* Right Column - Product Details */}
+          <div className="lg:w-3/5">
+            {/* Product Header */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 mb-4">
+              <h1 className="text-2xl font-medium text-gray-900 mb-2">
+                {product.name}
+              </h1>
+              
+              {/* Ratings */}
+              <div className="flex items-center gap-1 mb-4">
+                <div className="flex text-yellow-400">
+                  <Star className="w-5 h-5 fill-current" />
+                  <Star className="w-5 h-5 fill-current" />
+                  <Star className="w-5 h-5 fill-current" />
+                  <Star className="w-5 h-5 fill-current" />
+                  <StarHalf className="w-5 h-5 fill-current" />
+                </div>
+                <span className="text-blue-600 text-sm hover:text-blue-700 hover:underline cursor-pointer">
+                  24 ratings
+                </span>
+                
+                {product.category && (
                   <>
-                    <CheckCircle className="w-4 h-4" />
-                    In Stock
-                  </>
-                ) : (
-                  <>
-                    <XCircle className="w-4 h-4" />
-                    Out of Stock
+                    <span className="mx-2 text-gray-300">|</span>
+                    <div className="flex items-center">
+                      <Tag className="w-4 h-4 text-gray-500 mr-1" />
+                      <span className="text-sm text-gray-600 font-medium">{product.category}</span>
+                    </div>
                   </>
                 )}
               </div>
-            </div>
-          </div>
-
-          {/* Product Details */}
-          <div className="space-y-8">
-            {/* Header */}
-            <div>
-              <h1 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-red-500 to-red-400 bg-clip-text text-transparent">
-                {product.name}
-              </h1>
-              {product.category && (
-                <div className="flex items-center gap-2 mb-4">
-                  <Tag className="w-5 h-5 text-red-400" />
-                  <span className="text-red-400 font-semibold uppercase tracking-wide text-sm">
-                    {product.category}
-                  </span>
-                </div>
-              )}
-            </div>
-
-            {/* Price */}
-            {product.price && (
-              <div className="bg-gradient-to-r from-gray-900 to-black border border-gray-800 rounded-xl p-6">
-                <div className="flex items-center gap-3">
-                  <DollarSign className="w-6 h-6 text-red-400" />
-                  <span className="text-3xl font-black text-white">${product.price}</span>
-                  <span className="text-gray-400">per unit</span>
-                </div>
-              </div>
-            )}
-
-            {/* Product Info Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Quantity */}
-              {product.quantity && (
-                <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-6">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Hash className="w-5 h-5 text-red-400" />
-                    <h3 className="font-semibold text-white">Quantity</h3>
-                  </div>
-                  <p className="text-2xl font-bold text-gray-300">{product.quantity}</p>
-                </div>
-              )}
-
-              {/* Availability Status */}
-              <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-6">
-                <div className="flex items-center gap-3 mb-2">
-                  <Shield className="w-5 h-5 text-red-400" />
-                  <h3 className="font-semibold text-white">Status</h3>
-                </div>
-                <div className={`flex items-center gap-2 ${
-                  product.availability ? 'text-green-400' : 'text-red-400'
-                }`}>
-                  {product.availability ? (
-                    <CheckCircle className="w-5 h-5" />
-                  ) : (
-                    <XCircle className="w-5 h-5" />
-                  )}
-                  <span className="font-semibold">
-                    {product.availability ? 'Available' : 'Out of Stock'}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Description */}
-            {product.description && (
-              <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <Info className="w-5 h-5 text-red-400" />
-                  <h3 className="font-semibold text-white text-lg">Product Description</h3>
-                </div>
-                <p className="text-gray-300 leading-relaxed">{product.description}</p>
-              </div>
-            )}
-
-            {/* Features */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="text-center p-4 bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl">
-                <Star className="w-8 h-8 text-red-400 mx-auto mb-2" />
-                <h4 className="font-semibold text-white">Premium Quality</h4>
-                <p className="text-gray-400 text-sm">Certified materials</p>
-              </div>
-              <div className="text-center p-4 bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl">
-                <Shield className="w-8 h-8 text-red-400 mx-auto mb-2" />
-                <h4 className="font-semibold text-white">Guaranteed</h4>
-                <p className="text-gray-400 text-sm">Quality assurance</p>
-              </div>
-              <div className="text-center p-4 bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl">
-                <Truck className="w-8 h-8 text-red-400 mx-auto mb-2" />
-                <h4 className="font-semibold text-white">Fast Delivery</h4>
-                <p className="text-gray-400 text-sm">Quick shipping</p>
-              </div>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="space-y-4">
-              <button
-                onClick={() => setShowCommandForm(true)}
-                disabled={!product.availability}
-                className={`w-full py-4 px-8 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 ${
-                  product.availability
-                    ? 'bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white transform hover:scale-105 shadow-2xl shadow-red-500/25'
-                    : 'bg-gray-700 text-gray-400 cursor-not-allowed'
-                }`}
-              >
-                <ShoppingCart className="w-6 h-6" />
-                {product.availability ? 'Order Now' : 'Currently Unavailable'}
-              </button>
               
-              <div className="text-center">
-                <p className="text-gray-400 text-sm">
-                  Need help? <span className="text-red-400 font-semibold cursor-pointer hover:underline">Contact our experts</span>
-                </p>
+              {/* Price */}
+              <div className="border-t border-b border-gray-200 py-4 my-4">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-3xl font-medium text-gray-900">
+                    ${product.price || 99.99}
+                  </span>
+                  <span className="text-sm text-gray-500">
+                    + Free Shipping
+                  </span>
+                </div>
+                
+                {/* Mock discount */}
+                <div className="mt-1 flex items-center gap-2">
+                  <span className="text-sm text-gray-500 line-through">
+                    ${(parseFloat(product.price || 99.99) * 1.2).toFixed(2)}
+                  </span>
+                  <span className="text-xs font-medium text-green-700 bg-green-100 px-1.5 py-0.5 rounded">
+                    Save 20%
+                  </span>
+                </div>
+              </div>
+              
+              {/* Quick details */}
+              <div>
+                <h3 className="font-medium text-gray-900 mb-2">About this item:</h3>
+                <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                  <li>Premium quality materials ensure durability and long-lasting performance</li>
+                  <li>Easy to use design makes installation and maintenance simple</li>
+                  <li>Compatible with most standard systems and applications</li>
+                  <li>Backed by our satisfaction guarantee and customer support</li>
+                </ul>
               </div>
             </div>
+            
+            {/* Buy Box */}
+            <div className="bg-white border border-gray-200 rounded-lg p-6 mb-4">
+              <div className="mb-4">
+                <span className="text-xl font-medium text-gray-900">
+                  ${product.price || 99.99}
+                </span>
+                <div className="text-sm text-blue-600 hover:text-blue-700 hover:underline cursor-pointer">
+                  FREE delivery available
+                </div>
+              </div>
+              
+              <div className={`mb-4 text-sm ${product.availability ? 'text-green-700' : 'text-red-700'} font-medium`}>
+                {product.availability ? (
+                  <div className="flex items-center gap-1">
+                    <CheckCircle className="w-4 h-4" />
+                    <span>In Stock</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-1">
+                    <XCircle className="w-4 h-4" />
+                    <span>Out of Stock</span>
+                  </div>
+                )}
+              </div>
+              
+              {/* Quantity selector */}
+              <div className="mb-4">
+                <label className="text-sm text-gray-700 block mb-1">Quantity:</label>
+                <div className="flex items-center">
+                  <button 
+                    onClick={() => handleQuantityChange(-1)}
+                    className="border border-gray-300 rounded-l px-3 py-1 hover:bg-gray-100"
+                    disabled={quantity <= 1}
+                  >
+                    -
+                  </button>
+                  <div className="border-t border-b border-gray-300 px-4 py-1 text-center min-w-[40px]">
+                    {quantity}
+                  </div>
+                  <button 
+                    onClick={() => handleQuantityChange(1)}
+                    className="border border-gray-300 rounded-r px-3 py-1 hover:bg-gray-100"
+                    disabled={quantity >= (product?.quantity || 10)}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              
+              {/* Action Buttons */}
+              <div className="space-y-3">
+                <button
+                  onClick={() => setShowCommandForm(true)}
+                  disabled={!product.availability}
+                  className={`w-full py-2 px-4 rounded-full font-medium transition-colors duration-200 flex items-center justify-center gap-2 ${
+                    product.availability
+                      ? 'bg-red-600 hover:bg-red-500 text-gray-900'
+                      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  }`}
+                >
+                  <ShoppingCart className="w-5 h-5" />
+                  Buy Now
+                </button>
+                
+            
+              </div>
+              
+              {/* Secure transaction */}
+              <div className="mt-4 pt-4 border-t border-gray-200 text-sm text-gray-700">
+                <div className="flex items-center gap-1 mb-1">
+                  <Shield className="w-4 h-4 text-gray-500" />
+                  <span className="font-medium">Secure transaction</span>
+                </div>
+                
+                <div className="flex items-start gap-2 mt-3">
+                  <Truck className="w-4 h-4 text-gray-500 mt-0.5" />
+                  <div>
+                    <div className="font-medium">Fast delivery</div>
+                    <div className="text-gray-500">Usually ships within 2-3 business days</div>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-2 mt-3">
+                  <Award className="w-4 h-4 text-gray-500 mt-0.5" />
+                  <div>
+                    <div className="font-medium">Warranty</div>
+                    <div className="text-gray-500">1 year manufacturer warranty</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+           
+            
+          
           </div>
         </div>
       </div>
 
       {/* Command Form Modal */}
       {showCommandForm && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-gradient-to-br from-gray-900 to-black border border-red-500/30 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <CommandForm
               product={product}
+              quantity={quantity}
               onClose={() => setShowCommandForm(false)}
             />
           </div>

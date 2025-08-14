@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { ChevronRight, Menu, X, Wrench, Calendar } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,165 +22,116 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const toggleMobileMenu = () => {
+    setIsOpen(!isOpen);
+    setServicesOpen(false); // Close services dropdown when toggling mobile menu
+  };
+
+  const handleLinkClick = () => {
+    setIsOpen(false);
+    setServicesOpen(false);
+  };
+
   return (
-    <nav className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-red-500/20 shadow-2xl">
+    <nav className="fixed top-0 w-full z-50 bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="text-2xl font-black text-red-500 hover:text-red-400 transition-colors duration-300">
-              <span className="bg-gradient-to-r from-red-500 to-red-400 bg-clip-text text-transparent">
-                MechanicalCo
-              </span>
+            <Link to="/" onClick={handleLinkClick} className="text-3xl font-black tracking-tight text-gray-900">
+              Auto<span className="text-red-600">Pro</span>
             </Link>
           </div>
 
           {/* Desktop menu */}
           <div className="hidden md:flex space-x-8 items-center">
-            <Link 
-              to="/" 
-              className="relative text-gray-300 hover:text-red-400 transition-all duration-300 font-semibold group"
+            <Link
+              to="/"
+              className="relative text-gray-700 hover:text-red-600 transition-colors duration-300 font-medium group py-2"
             >
               Home
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-red-400 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
-            <Link 
-              to="/about" 
-              className="relative text-gray-300 hover:text-red-400 transition-all duration-300 font-semibold group"
+            <Link
+              to="/about"
+              className="relative text-gray-700 hover:text-red-600 transition-colors duration-300 font-medium group py-2"
             >
               About Us
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-red-400 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
 
-            {/* Services Dropdown */}
-            <div className="relative flex items-center" ref={dropdownRef}>
+            {/* Services Dropdown (Redesigned for Hover) */}
+            <div className="relative group" ref={dropdownRef}>
               <Link
                 to="/services"
-                className="relative text-gray-300 hover:text-red-400 transition-all duration-300 font-semibold group"
-                onClick={() => setServicesOpen(false)}
+                className="flex items-center text-gray-700 hover:text-red-600 transition-colors duration-300 font-medium py-2"
               >
                 Services
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-red-400 group-hover:w-full transition-all duration-300"></span>
+                <ChevronRight className="w-4 h-4 ml-2 group-hover:rotate-90 transition-transform duration-300" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <button
-                onClick={() => setServicesOpen(!servicesOpen)}
-                className="ml-2 focus:outline-none flex items-center text-gray-300 hover:text-red-400 transition-colors duration-300"
-                aria-haspopup="true"
-                aria-expanded={servicesOpen}
-                aria-label="Toggle Services dropdown"
-              >
-                <svg
-                  className={`w-4 h-4 transition-transform duration-300 ${
-                    servicesOpen ? "rotate-180" : "rotate-0"
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+              <div className="absolute top-full mt-2 w-64 bg-white border border-gray-200 rounded-md shadow-lg z-10 -right-4 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 animate-fade-in overflow-hidden">
+                <Link
+                  to="/product"
+                  onClick={handleLinkClick}
+                  className="flex items-center px-6 py-4 text-gray-700 hover:bg-gray-100 hover:text-red-600 transition-all duration-300 font-medium"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              {servicesOpen && (
-                <div className="absolute top-full mt-2 w-56 bg-gradient-to-br from-gray-900 to-black border border-red-500/30 rounded-xl shadow-2xl z-10 right-0 overflow-hidden">
-                  <Link
-                    to="/product"
-                    onClick={() => setServicesOpen(false)}
-                    className="block px-6 py-3 text-gray-300 hover:bg-gradient-to-r hover:from-red-500/20 hover:to-red-400/20 hover:text-red-400 transition-all duration-300 font-medium"
-                  >
-                    <div className="flex items-center">
-                      <span className="w-2 h-2 bg-red-500 rounded-full mr-3 opacity-70"></span>
-                      Shop Mechanical Stuff
-                    </div>
-                  </Link>
-                  <Link
-                    to="/reservation"
-                    onClick={() => setServicesOpen(false)}
-                    className="block px-6 py-3 text-gray-300 hover:bg-gradient-to-r hover:from-red-500/20 hover:to-red-400/20 hover:text-red-400 transition-all duration-300 font-medium border-t border-gray-800"
-                  >
-                    <div className="flex items-center">
-                      <span className="w-2 h-2 bg-red-500 rounded-full mr-3 opacity-70"></span>
-                      Make Rendez-vous
-                    </div>
-                  </Link>
-                </div>
-              )}
+                  <Wrench size={20} className="mr-3 text-red-600" />
+                  Shop
+                </Link>
+                <Link
+                  to="/reservation"
+                  onClick={handleLinkClick}
+                  className="flex items-center px-6 py-4 text-gray-700 hover:bg-gray-100 hover:text-red-600 transition-all duration-300 font-medium border-t border-gray-200"
+                >
+                  <Calendar size={20} className="mr-3 text-red-600" />
+                  Make Rendez-vous
+                </Link>
+              </div>
             </div>
 
-            <Link 
-              to="/contact" 
-              className="relative text-gray-300 hover:text-red-400 transition-all duration-300 font-semibold group"
+            <Link
+              to="/contact"
+              className="relative text-gray-700 hover:text-red-600 transition-colors duration-300 font-medium group py-2"
             >
               Contact
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-red-400 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
-          
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={toggleMobileMenu}
               type="button"
-              className="focus:outline-none focus:ring-2 focus:ring-red-500 p-2 rounded-lg text-gray-300 hover:text-red-400 transition-colors duration-300"
+              className="p-2 rounded-md text-gray-700 hover:text-red-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-red-600"
               aria-label="Toggle menu"
             >
               {isOpen ? (
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <X className="h-6 w-6" />
               ) : (
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
+                <Menu className="h-6 w-6" />
               )}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="md:hidden bg-gradient-to-b from-gray-900 to-black border-t border-red-500/20 shadow-2xl">
+      {/* Mobile menu content */}
+      <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-96" : "max-h-0"}`}>
+        <div className="bg-white shadow-inner border-t border-gray-200">
           <div className="px-4 pt-4 pb-6 space-y-2">
             <Link
               to="/"
-              className="block px-4 py-3 rounded-lg text-gray-300 hover:bg-gradient-to-r hover:from-red-500/20 hover:to-red-400/20 hover:text-red-400 transition-all duration-300 font-semibold"
-              onClick={() => setIsOpen(false)}
+              className="block px-4 py-3 rounded-md text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-300 font-medium"
+              onClick={handleLinkClick}
             >
               Home
             </Link>
             <Link
               to="/about"
-              className="block px-4 py-3 rounded-lg text-gray-300 hover:bg-gradient-to-r hover:from-red-500/20 hover:to-red-400/20 hover:text-red-400 transition-all duration-300 font-semibold"
-              onClick={() => setIsOpen(false)}
+              className="block px-4 py-3 rounded-md text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-300 font-medium"
+              onClick={handleLinkClick}
             >
               About Us
             </Link>
@@ -188,46 +140,42 @@ export default function Navbar() {
             <div className="space-y-1">
               <Link
                 to="/services"
-                className="block px-4 py-3 rounded-lg text-red-400 hover:bg-gradient-to-r hover:from-red-500/20 hover:to-red-400/20 hover:text-red-300 transition-all duration-300 font-bold border border-red-500/30"
-                onClick={() => setIsOpen(false)}
+                className="flex items-center justify-between px-4 py-3 rounded-md text-red-600 hover:bg-red-50 transition-all duration-300 font-semibold border border-red-200"
+                onClick={handleLinkClick}
               >
-                Services
+                <span>Services</span>
+                <ChevronRight className="w-4 h-4 ml-2" />
               </Link>
               <div className="ml-4 space-y-1">
                 <Link
                   to="/product"
-                  className="block px-4 py-2 rounded-lg text-gray-400 hover:bg-gradient-to-r hover:from-red-500/10 hover:to-red-400/10 hover:text-red-400 transition-all duration-300 text-sm"
-                  onClick={() => setIsOpen(false)}
+                  className="flex items-center px-4 py-2 rounded-md text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-300 text-sm"
+                  onClick={handleLinkClick}
                 >
-                  <span className="flex items-center">
-                    <span className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></span>
-                    Shop Mechanical Stuff
-                  </span>
+                  <Wrench size={16} className="mr-2 text-red-600" />
+                  Shop 
                 </Link>
                 <Link
                   to="/reservation"
-                  className="block px-4 py-2 rounded-lg text-gray-400 hover:bg-gradient-to-r hover:from-red-500/10 hover:to-red-400/10 hover:text-red-400 transition-all duration-300 text-sm"
-                  onClick={() => setIsOpen(false)}
+                  className="flex items-center px-4 py-2 rounded-md text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-300 text-sm"
+                  onClick={handleLinkClick}
                 >
-                  <span className="flex items-center">
-                    <span className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></span>
-                    Make Rendez-vous
-                  </span>
+                  <Calendar size={16} className="mr-2 text-red-600" />
+                  Make Rendez-vous
                 </Link>
               </div>
             </div>
 
             <Link
               to="/contact"
-              className="block px-4 py-3 rounded-lg text-gray-300 hover:bg-gradient-to-r hover:from-red-500/20 hover:to-red-400/20 hover:text-red-400 transition-all duration-300 font-semibold"
-              onClick={() => setIsOpen(false)}
+              className="block px-4 py-3 rounded-md text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-300 font-medium"
+              onClick={handleLinkClick}
             >
               Contact
             </Link>
-       
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

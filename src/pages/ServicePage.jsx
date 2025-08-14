@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { 
@@ -6,23 +7,22 @@ import {
   Calendar, 
   ArrowRight, 
   Wrench, 
-  Car, 
   Cog, 
-  Star,
   Shield,
   Clock,
-  Users,
-  CheckCircle,
-  Zap
+  ChevronRight,
+  Phone,
+  Mail,
+  MapPin
 } from "lucide-react";
 
 export default function ServicePage() {
   const [isVisible, setIsVisible] = useState({});
+  const navigate = useNavigate();
 
-  // Simulate navigation - replace with your actual navigation logic
+  // Handle navigation with React Router
   const handleNavigation = (route) => {
-    console.log(`Navigating to: ${route}`);
-    // Your navigation logic here, e.g., window.location.href = route;
+    navigate(route);
   };
 
   useEffect(() => {
@@ -50,17 +50,13 @@ export default function ServicePage() {
       title: "MECHANICAL PARTS STORE",
       subtitle: "Premium Quality Components",
       description: "Discover our extensive catalog of high-performance mechanical parts, precision-engineered components, and professional-grade accessories for automotive and industrial applications.",
-      icon: <ShoppingCart className="w-16 h-16" />,
+      icon: <ShoppingCart className="w-12 h-12" />,
       features: [
         "OEM & Aftermarket Parts",
         "Industrial Components",
         "Professional Tools",
         "Quality Guaranteed"
       ],
-      color: "from-blue-600 to-blue-500",
-      hoverColor: "hover:from-blue-500 hover:to-blue-400",
-      borderColor: "border-blue-500/50",
-      shadowColor: "shadow-blue-500/25",
       route: "/product",
       buttonText: "Explore Catalog"
     },
@@ -69,17 +65,13 @@ export default function ServicePage() {
       title: "PROFESSIONAL SERVICES",
       subtitle: "Expert Maintenance & Repair",
       description: "Schedule comprehensive automotive services with our certified mechanics. From routine maintenance to complex repairs, we deliver precision workmanship with cutting-edge diagnostics.",
-      icon: <Calendar className="w-16 h-16" />,
+      icon: <Calendar className="w-12 h-12" />,
       features: [
         "Oil Changes & Tune-ups",
         "Diagnostic Services",
         "Engine Repairs",
         "24/7 Emergency Support"
       ],
-      color: "from-red-600 to-red-500",
-      hoverColor: "hover:from-red-500 hover:to-red-400",
-      borderColor: "border-red-500/50",
-      shadowColor: "shadow-red-500/25",
       route: "/reservation",
       buttonText: "Book Appointment"
     }
@@ -89,91 +81,100 @@ export default function ServicePage() {
     {
       icon: <Wrench className="w-8 h-8" />,
       title: "Custom Fabrication",
-      description: "Bespoke mechanical solutions engineered to your exact specifications"
+      description: "Bespoke mechanical solutions engineered to your exact specifications",
+      features: ["Custom parts", "Precision engineering", "Quality materials"],
+      route: "/custom-fabrication"
     },
     {
       icon: <Cog className="w-8 h-8" />,
       title: "Performance Upgrades",
-      description: "Enhance your vehicle's performance with professional modifications"
+      description: "Enhance your vehicle's performance with professional modifications",
+      features: ["Engine tuning", "Suspension upgrades", "Exhaust systems"],
+      route: "/performance-upgrades"
     },
     {
       icon: <Shield className="w-8 h-8" />,
       title: "Warranty Coverage",
-      description: "Comprehensive protection plans for all our services and parts"
+      description: "Comprehensive protection plans for all our services and parts",
+      features: ["Extended warranties", "Satisfaction guarantee", "Parts coverage"],
+      route: "/warranty"
     },
     {
       icon: <Clock className="w-8 h-8" />,
       title: "Express Service",
-      description: "Fast-track maintenance for urgent repairs and quick fixes"
+      description: "Fast-track maintenance for urgent repairs and quick fixes",
+      features: ["Same-day service", "Priority scheduling", "Rapid diagnostics"],
+      route: "/express-service"
     }
   ];
 
-  const stats = [
-    { number: "10K+", label: "Parts in Stock" },
-    { number: "500+", label: "Services Completed" },
-    { number: "98%", label: "Customer Satisfaction" },
-    { number: "24/7", label: "Support Available" }
+  const contactInfo = [
+    {
+      icon: <Phone className="w-5 h-5" />,
+      title: "Call Us",
+      info: "+1 (555) 123-4567",
+      action: () => window.location.href = "tel:+15551234567"
+    },
+    {
+      icon: <Mail className="w-5 h-5" />,
+      title: "Email Us",
+      info: "service@autopro.com",
+      action: () => window.location.href = "mailto:service@autopro.com"
+    },
+    {
+      icon: <MapPin className="w-5 h-5" />,
+      title: "Visit Us",
+      info: "123 Precision Drive, Metropolis",
+      action: () => window.open("https://maps.google.com/?q=123+Precision+Drive+Metropolis", "_blank")
+    }
   ];
 
   return (
-    <div className="bg-black text-white min-h-screen">
-        <Navbar />
+    <div className="bg-gray-50 text-gray-900 font-serif">
+      <Navbar />
+      
       {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
-          <div className="absolute inset-0 opacity-10">
-            {[...Array(15)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-3 h-3 bg-red-500 rounded-full animate-pulse"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 3}s`,
-                  animationDuration: `${2 + Math.random() * 2}s`
-                }}
-              />
-            ))}
-          </div>
-          {/* Grid Pattern */}
-          <div className="absolute inset-0 opacity-5" 
-               style={{
-                 backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                                  linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-                 backgroundSize: '50px 50px'
-               }}
-          />
-        </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <div className={`transform transition-all duration-1000 ${isVisible.hero ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h1 className="text-6xl md:text-8xl font-black mb-6 bg-gradient-to-r from-red-500 via-red-400 to-red-600 bg-clip-text text-transparent">
-              OUR
-              <br />
-              <span className="text-white">SERVICES</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-8 leading-relaxed">
-              Experience the pinnacle of mechanical excellence through our comprehensive suite of 
-              professional services and premium parts solutions.
-            </p>
-          </div>
-        </div>
+    <section
+  id="hero"
+  className="relative min-h-screen flex items-center bg-gray-900 bg-cover bg-center"
+  style={{ backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVdFWToo8o2Gn3Pc0O-iYF8nVChyOCQyFYstSnKKaw2LoJuxGrPSM5Z1H3gp9s3UqWwuM&usqp=CAU')" }} // change path
+>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
-        {/* Floating Elements */}
-        <div className="absolute top-32 right-20 w-24 h-24 border-2 border-red-500/20 rotate-45 animate-spin" style={{animationDuration: '30s'}} />
-        <div className="absolute bottom-32 left-20 w-20 h-20 bg-gradient-to-br from-blue-500/20 to-transparent rounded-full animate-bounce" />
-      </section>
+  <div className="container mx-auto px-6 relative z-10 max-w-4xl">
+    <h1 className="text-5xl font-semibold mb-6 leading-tight text-white">
+      Our <span className="text-red-600">Professional</span> Services
+    </h1>
+    <div className="w-16 h-0.5 bg-red-600 mb-6"></div>
+    <p className="text-xl text-gray-200 mb-8 leading-relaxed">
+      Experience the pinnacle of mechanical excellence through our comprehensive suite of 
+      professional services and premium parts solutions.
+    </p>
+    <div className="flex flex-wrap gap-4">
+      <button 
+        onClick={() => handleNavigation("/reservation")}
+        className="bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300">
+        Schedule Service
+      </button>
+      <button 
+        onClick={() => handleNavigation("/product")}
+        className="border border-white hover:border-red-600 hover:text-red-600 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300">
+        Browse Parts
+      </button>
+    </div>
+  </div>
+</section>
+
 
       {/* Main Services Section */}
-      <section id="main-services" className="py-20 bg-gradient-to-b from-black to-gray-900">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className={`text-center mb-20 transform transition-all duration-1000 ${isVisible['main-services'] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h2 className="text-5xl md:text-6xl font-black mb-6">
-              <span className="text-red-500">PREMIUM</span> SOLUTIONS
-            </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Choose your path to mechanical excellence with our flagship services
+      <section id="main-services" className="py-24 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-semibold">Primary Services</h2>
+            <div className="w-16 h-0.5 bg-red-600 mx-auto my-4"></div>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Our core service offerings to meet your automotive needs
             </p>
           </div>
 
@@ -181,53 +182,40 @@ export default function ServicePage() {
             {mainServices.map((service, index) => (
               <div
                 key={service.id}
-                onClick={() => handleNavigation(service.route)}
-                className={`group relative cursor-pointer bg-gradient-to-br from-gray-900 to-black border-2 ${service.borderColor} hover:border-opacity-100 border-opacity-30 rounded-3xl p-10 transform hover:scale-105 transition-all duration-500 hover:shadow-2xl ${service.shadowColor} ${isVisible['main-services'] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+                className={`bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 overflow-hidden ${isVisible['main-services'] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
                 style={{ transitionDelay: `${index * 0.3}s` }}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === "Enter" && handleNavigation(service.route)}
               >
-                {/* Gradient Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-500`} />
-                
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <div className="text-red-500 group-hover:text-white mb-8 transform group-hover:scale-110 transition-all duration-300">
-                    {service.icon}
-                  </div>
-                  
-                  {/* Title */}
-                  <div className="mb-4">
-                    <h3 className="text-3xl md:text-4xl font-black text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-white group-hover:to-gray-300 transition-all duration-300">
-                      {service.title}
-                    </h3>
-                    <p className="text-red-400 text-lg font-semibold mt-2">
+                <div className="p-8">
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="text-red-600">
+                      {service.icon}
+                    </div>
+                    <div className="text-sm font-medium text-gray-500">
                       {service.subtitle}
-                    </p>
+                    </div>
                   </div>
                   
-                  {/* Description */}
-                  <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+                  <h3 className="text-2xl font-semibold mb-4">{service.title}</h3>
+                  
+                  <p className="text-gray-600 mb-6 leading-relaxed">
                     {service.description}
                   </p>
                   
-                  {/* Features */}
-                  <div className="grid grid-cols-2 gap-4 mb-8">
+                  <div className="space-y-3 mb-8">
                     {service.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center text-gray-300">
-                        <CheckCircle className="w-5 h-5 text-red-500 mr-3 flex-shrink-0" />
-                        <span className="text-sm font-medium">{feature}</span>
+                      <div key={idx} className="flex items-center text-gray-600">
+                        <ChevronRight className="w-4 h-4 text-red-600 mr-2 flex-shrink-0" />
+                        <span>{feature}</span>
                       </div>
                     ))}
                   </div>
                   
-                  {/* CTA Button */}
-                  <button className={`group-hover:scale-105 bg-gradient-to-r ${service.color} ${service.hoverColor} text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg ${service.shadowColor} flex items-center justify-center w-full`}>
-                    <span className="flex items-center">
-                      {service.buttonText}
-                      <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </span>
+                  <button 
+                    onClick={() => handleNavigation(service.route)}
+                    className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-md transition-colors duration-300 flex items-center justify-center"
+                  >
+                    {service.buttonText}
+                    <ArrowRight className="ml-2 w-5 h-5" />
                   </button>
                 </div>
               </div>
@@ -236,39 +224,14 @@ export default function ServicePage() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-gradient-to-r from-red-600 to-red-500">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className={`transform transition-all duration-1000 ${isVisible['main-services'] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-                style={{ transitionDelay: `${index * 0.1}s` }}
-              >
-                <div className="text-4xl md:text-6xl font-black text-white mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-red-100 font-semibold text-lg">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Additional Services */}
-      <section id="additional" className="py-20 bg-gradient-to-b from-gray-900 to-black">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className={`text-center mb-16 transform transition-all duration-1000 ${isVisible.additional ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h2 className="text-4xl md:text-5xl font-black mb-4">
-              <span className="text-white">ADDITIONAL</span>
-              <br />
-              <span className="text-red-500">EXPERTISE</span>
-            </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Comprehensive solutions that go beyond the ordinary
+      <section id="additional" className="py-24 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-semibold">Specialized Services</h2>
+            <div className="w-16 h-0.5 bg-red-600 mx-auto my-4"></div>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Additional specialized solutions for your specific requirements
             </p>
           </div>
           
@@ -276,126 +239,89 @@ export default function ServicePage() {
             {additionalServices.map((service, index) => (
               <div
                 key={index}
-                className={`group bg-gradient-to-br from-gray-900 to-black border border-gray-800 hover:border-red-500/50 rounded-2xl p-8 text-center transform hover:scale-105 transition-all duration-500 hover:shadow-xl hover:shadow-red-500/10 ${isVisible.additional ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-                style={{ transitionDelay: `${index * 0.1}s` }}
+                className="bg-white p-6 rounded-md shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200"
               >
-                <div className="text-red-500 mb-6 group-hover:scale-110 transition-transform duration-300 flex justify-center">
+                <div className="text-red-600 mb-4">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-white group-hover:text-red-400 transition-colors">
+                <h3 className="text-xl font-semibold mb-3">
                   {service.title}
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <p className="text-gray-600 mb-4">
                   {service.description}
                 </p>
+                <div className="space-y-2 mb-6">
+                  {service.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center text-gray-600 text-sm">
+                      <ChevronRight className="w-4 h-4 text-red-600 mr-2" />
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+           
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section id="why-choose" className="py-20 bg-gradient-to-r from-gray-900 to-black">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className={`transform transition-all duration-1000 ${isVisible['why-choose'] ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
-              <h2 className="text-4xl md:text-5xl font-black mb-6">
-                <span className="text-red-500">WHY CHOOSE</span>
-                <br />
-                <span className="text-white">OUR SERVICES?</span>
-              </h2>
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                Experience the difference that comes from working with industry-leading professionals 
-                who are passionate about mechanical excellence and customer satisfaction.
-              </p>
-              
-              <div className="space-y-6">
-                {[
-                  { icon: <Star className="w-6 h-6" />, title: "Premium Quality", desc: "Only the finest components and materials" },
-                  { icon: <Users className="w-6 h-6" />, title: "Expert Team", desc: "Certified professionals with decades of experience" },
-                  { icon: <Zap className="w-6 h-6" />, title: "Fast Service", desc: "Efficient solutions without compromising quality" }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-start space-x-4 p-4 bg-black/50 rounded-xl border border-gray-800">
-                    <div className="text-red-500 mt-1">{item.icon}</div>
-                    <div>
-                      <h4 className="text-white font-bold text-lg mb-1">{item.title}</h4>
-                      <p className="text-gray-400">{item.desc}</p>
-                    </div>
+      {/* Contact Information */}
+      <section className="py-16 bg-white border-t border-gray-100">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-semibold">Get In Touch</h2>
+            <div className="w-16 h-0.5 bg-red-600 mx-auto my-4"></div>
+            <p className="text-gray-600">Reach out to us for service inquiries or consultations</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {contactInfo.map((info, index) => (
+              <button
+                key={index}
+                onClick={info.action}
+                className="bg-gray-50 p-6 rounded-md shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 text-left w-full"
+              >
+                <div className="flex items-center space-x-4">
+                  <div className="bg-red-100 p-3 rounded-full text-red-600">
+                    {info.icon}
                   </div>
-                ))}
-              </div>
-            </div>
-            
-            <div className={`transform transition-all duration-1000 ${isVisible['why-choose'] ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
-              <div className="relative">
-                <div className="bg-gradient-to-br from-red-500/20 to-blue-500/20 rounded-3xl p-8 border border-red-500/30">
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="text-center p-6 bg-black/70 rounded-xl backdrop-blur-sm">
-                      <Car className="w-12 h-12 text-red-500 mx-auto mb-4" />
-                      <div className="text-3xl font-black text-white mb-2">AUTO</div>
-                      <div className="text-gray-400">Services</div>
-                    </div>
-                    <div className="text-center p-6 bg-black/70 rounded-xl backdrop-blur-sm">
-                      <Cog className="w-12 h-12 text-blue-500 mx-auto mb-4" />
-                      <div className="text-3xl font-black text-white mb-2">PARTS</div>
-                      <div className="text-gray-400">Catalog</div>
-                    </div>
-                    <div className="text-center p-6 bg-black/70 rounded-xl backdrop-blur-sm col-span-2">
-                      <Shield className="w-12 h-12 text-green-500 mx-auto mb-4" />
-                      <div className="text-3xl font-black text-white mb-2">GUARANTEED</div>
-                      <div className="text-gray-400">Quality & Satisfaction</div>
-                    </div>
+                  <div>
+                    <h3 className="text-lg font-medium">{info.title}</h3>
+                    <p className="text-gray-600">{info.info}</p>
                   </div>
                 </div>
-                
-                {/* Floating elements around the grid */}
-                <div className="absolute -top-4 -right-4 w-8 h-8 bg-red-500/30 rounded-full animate-pulse" />
-                <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-blue-500/30 rounded-full animate-pulse" style={{animationDelay: '1s'}} />
-              </div>
-            </div>
+              </button>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-t from-black to-gray-900">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className={`transform transition-all duration-1000 ${isVisible['why-choose'] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h2 className="text-4xl md:text-5xl font-black mb-6">
-              <span className="text-white">READY TO</span>
-              <br />
-              <span className="text-red-500">GET STARTED?</span>
-            </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Join thousands of satisfied customers who trust us with their mechanical needs.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => handleNavigation("/product")}
-                className="group bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold py-4 px-8 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-2xl shadow-blue-500/25"
-              >
-                <span className="flex items-center justify-center">
-                  Browse Parts
-                  <ShoppingCart className="ml-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-                </span>
-              </button>
-              <button 
-                onClick={() => handleNavigation("/reservation")}
-                className="group bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold py-4 px-8 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-2xl shadow-red-500/25"
-              >
-                <span className="flex items-center justify-center">
-                  Book Service
-                  <Calendar className="ml-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-                </span>
-              </button>
-            </div>
+      {/* CTA */}
+      <section className="py-16 bg-gray-900 text-white">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-3xl font-semibold mb-6">Ready For Service?</h2>
+          <div className="w-16 h-0.5 bg-red-600 mx-auto mb-6"></div>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button 
+              onClick={() => handleNavigation("/product")}
+              className="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300 flex items-center justify-center"
+            >
+              Browse Parts
+              <ShoppingCart className="ml-2 w-5 h-5" />
+            </button>
+            <button 
+              onClick={() => handleNavigation("/reservation")}
+              className="bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300 flex items-center justify-center"
+            >
+              Book Service
+              <Calendar className="ml-2 w-5 h-5" />
+            </button>
           </div>
         </div>
       </section>
 
-      {/* Footer Placeholder - Replace with your actual Footer component */}
-        <Footer />
+      <Footer />
     </div>
   );
 }

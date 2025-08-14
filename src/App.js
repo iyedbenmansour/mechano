@@ -10,6 +10,7 @@ import ReservationsList from "./admin/ReservationsList";
 import ReservationDetails from "./admin/ReservationDetails";
 import ViewAllContacts from "./admin/ViewAllContacts";
 import ViewContact from "./admin/ViewContact";
+import Admin from "./admin/Admin"; // Ensure this file exists
 
 import ProductList from "./pages/Products";
 import ViewProduct from "./pages/ViewProduct"; // Ensure this file exists
@@ -18,11 +19,14 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import ServicePage from "./pages/ServicePage";
+import Login from "./admin/login";
 
 function App() {
   return (
     <Router>
       <Routes>
+        {/* Admin routes */}
+        <Route path="/admin" element={<Admin />} />
         <Route path="/addproduct" element={<AdminPanel />} />
         <Route path="/productslist" element={<ProductsList />} />
         <Route path="/update-product/:id" element={<UpdateProduct />} />
@@ -32,6 +36,7 @@ function App() {
         <Route path="/reservation/:id" element={<ReservationDetails />} />
         <Route path="/contacts" element={<ViewAllContacts />} />
         <Route path="/contact/:id" element={<ViewContact />} />
+        <Route path="/login" element={<Login />} />
 
 
         {/* Public routes */}
