@@ -75,7 +75,7 @@ export default function ViewProduct() {
         <Navbar />
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
-            <div className="w-16 h-16 border-4 border-red-500/30 border-t-red-600 rounded-full animate-spin mx-auto mb-4"></div>
+            <div className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-600 rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-gray-500 text-lg">Loading product details...</p>
           </div>
         </div>
@@ -90,12 +90,12 @@ export default function ViewProduct() {
         <Navbar />
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center max-w-md">
-            <XCircle className="w-24 h-24 text-red-500 mx-auto mb-6" />
+            <XCircle className="w-24 h-24 text-orange-500 mx-auto mb-6" />
             <h2 className="text-2xl font-medium text-gray-800 mb-4">Product Not Found</h2>
             <p className="text-gray-500 mb-6">{error}</p>
             <Link
               to="/products"
-              className="bg-red-600 hover:bg-red-700 text-white font-medium px-6 py-3 rounded-md transition-colors duration-200 inline-flex items-center gap-2"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-md transition-colors duration-200 inline-flex items-center gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Products
@@ -116,13 +116,13 @@ export default function ViewProduct() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="py-3">
             <nav className="text-sm text-gray-600 mb-4">
-              <span className="hover:text-red-600 cursor-pointer">Home</span>
+            <Link to="/">  <span className="hover:text-blue-600 cursor-pointer">Home</span></Link>
               <span className="mx-2">›</span>
-              <Link to="/products" className="hover:text-red-600 cursor-pointer">All Products</Link>
+              <Link to="/product" className="hover:text-blue-600 cursor-pointer">All Products</Link>
               <span className="mx-2">›</span>
               {product.category && (
                 <>
-                  <span className="hover:text-red-600 cursor-pointer">{product.category}</span>
+                    <Link to="/product" className="hover:text-blue-600 cursor-pointer">{product.category}</Link>
                   <span className="mx-2">›</span>
                 </>
               )}
@@ -141,7 +141,7 @@ export default function ViewProduct() {
                 <div className="relative">
                   {imageLoading && (
                     <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
-                      <div className="w-8 h-8 border-2 border-red-500/30 border-t-red-600 rounded-full animate-spin"></div>
+                      <div className="w-8 h-8 border-2 border-blue-500/30 border-t-blue-600 rounded-full animate-spin"></div>
                     </div>
                   )}
                   {product.imageUrl ? (
@@ -164,7 +164,7 @@ export default function ViewProduct() {
                     <div className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium ${
                       product.availability 
                         ? 'bg-green-100 text-green-800' 
-                        : 'bg-red-100 text-red-800'
+                        : 'bg-orange-100 text-orange-800'
                     }`}>
                       {product.availability ? (
                         <>
@@ -201,7 +201,7 @@ export default function ViewProduct() {
               
               {/* Ratings */}
               <div className="flex items-center gap-1 mb-4">
-                <div className="flex text-yellow-400">
+                <div className="flex text-orange-400">
                   <Star className="w-5 h-5 fill-current" />
                   <Star className="w-5 h-5 fill-current" />
                   <Star className="w-5 h-5 fill-current" />
@@ -239,7 +239,7 @@ export default function ViewProduct() {
                   <span className="text-sm text-gray-500 line-through">
                     ${(parseFloat(product.price || 99.99) * 1.2).toFixed(2)}
                   </span>
-                  <span className="text-xs font-medium text-green-700 bg-green-100 px-1.5 py-0.5 rounded">
+                  <span className="text-xs font-medium text-orange-700 bg-orange-100 px-1.5 py-0.5 rounded">
                     Save 20%
                   </span>
                 </div>
@@ -268,7 +268,7 @@ export default function ViewProduct() {
                 </div>
               </div>
               
-              <div className={`mb-4 text-sm ${product.availability ? 'text-green-700' : 'text-red-700'} font-medium`}>
+              <div className={`mb-4 text-sm ${product.availability ? 'text-green-700' : 'text-orange-700'} font-medium`}>
                 {product.availability ? (
                   <div className="flex items-center gap-1">
                     <CheckCircle className="w-4 h-4" />
@@ -288,7 +288,7 @@ export default function ViewProduct() {
                 <div className="flex items-center">
                   <button 
                     onClick={() => handleQuantityChange(-1)}
-                    className="border border-gray-300 rounded-l px-3 py-1 hover:bg-gray-100"
+                    className="border border-gray-300 rounded-l px-3 py-1 hover:bg-blue-50 hover:border-blue-300"
                     disabled={quantity <= 1}
                   >
                     -
@@ -298,7 +298,7 @@ export default function ViewProduct() {
                   </div>
                   <button 
                     onClick={() => handleQuantityChange(1)}
-                    className="border border-gray-300 rounded-r px-3 py-1 hover:bg-gray-100"
+                    className="border border-gray-300 rounded-r px-3 py-1 hover:bg-blue-50 hover:border-blue-300"
                     disabled={quantity >= (product?.quantity || 10)}
                   >
                     +
@@ -313,7 +313,7 @@ export default function ViewProduct() {
                   disabled={!product.availability}
                   className={`w-full py-2 px-4 rounded-full font-medium transition-colors duration-200 flex items-center justify-center gap-2 ${
                     product.availability
-                      ? 'bg-red-600 hover:bg-red-500 text-gray-900'
+                      ? 'bg-orange-500 hover:from-blue-700 hover:to-orange-600 text-white'
                       : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   }`}
                 >
@@ -327,12 +327,12 @@ export default function ViewProduct() {
               {/* Secure transaction */}
               <div className="mt-4 pt-4 border-t border-gray-200 text-sm text-gray-700">
                 <div className="flex items-center gap-1 mb-1">
-                  <Shield className="w-4 h-4 text-gray-500" />
+                  <Shield className="w-4 h-4 text-blue-500" />
                   <span className="font-medium">Secure transaction</span>
                 </div>
                 
                 <div className="flex items-start gap-2 mt-3">
-                  <Truck className="w-4 h-4 text-gray-500 mt-0.5" />
+                  <Truck className="w-4 h-4 text-orange-500 mt-0.5" />
                   <div>
                     <div className="font-medium">Fast delivery</div>
                     <div className="text-gray-500">Usually ships within 2-3 business days</div>
@@ -340,7 +340,7 @@ export default function ViewProduct() {
                 </div>
                 
                 <div className="flex items-start gap-2 mt-3">
-                  <Award className="w-4 h-4 text-gray-500 mt-0.5" />
+                  <Award className="w-4 h-4 text-blue-500 mt-0.5" />
                   <div>
                     <div className="font-medium">Warranty</div>
                     <div className="text-gray-500">1 year manufacturer warranty</div>

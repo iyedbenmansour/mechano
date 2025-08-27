@@ -10,10 +10,10 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center md:space-x-8">
           <Link to="/" className="text-2xl font-black text-red-500 hover:text-red-400 transition-colors duration-300">
             <span className="bg-gradient-to-r from-red-500 to-red-400 bg-clip-text text-transparent">
-              MechanicalCo
+              SILAD
             </span>
           </Link>
-          <p className="text-sm mt-2 md:mt-0 opacity-70">&copy; {new Date().getFullYear()} MechanicalCo. All rights reserved.</p>
+          <p className="text-sm mt-2 md:mt-0 opacity-70">&copy; {new Date().getFullYear()} SILAD. All rights reserved.</p>
         </div>
 
         {/* Footer Navigation */}

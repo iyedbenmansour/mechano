@@ -89,7 +89,7 @@ export default function ContactUs() {
             {[...Array(20)].map((_, i) => (
               <div
                 key={i}
-                className="absolute w-2 h-2 bg-red-500 rounded-full animate-pulse"
+                className="absolute w-2 h-2 bg-orange-500 rounded-full animate-pulse"
                 style={{
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
@@ -116,7 +116,7 @@ export default function ContactUs() {
               <h1 className="text-6xl md:text-7xl font-black mb-6 text-gray-900">
                 GET IN
                 <br />
-                <span className="text-red-600">TOUCH</span>
+                <span className="text-orange-600">TOUCH</span>
               </h1>
               <p className="text-xl text-gray-700 mb-8">
                 Ready to transform your mechanical challenges into breakthrough solutions? 
@@ -127,10 +127,10 @@ export default function ContactUs() {
                 {contactInfo.map((item, index) => (
                   <div
                     key={index}
-                    className="bg-white border border-gray-200 hover:border-red-400 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
+                    className="bg-white border border-gray-200 hover:border-orange-400 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
                   >
                     <div className="flex items-center space-x-4">
-                      <div className="text-red-500">{item.icon}</div>
+                      <div className="text-blue-500">{item.icon}</div>
                       <div>
                         <h3 className="font-bold text-lg">{item.title}</h3>
                         <p className="text-gray-800 text-lg">{item.info}</p>
@@ -144,7 +144,7 @@ export default function ContactUs() {
               <div className="space-y-4">
                 {features.map((feature, idx) => (
                   <div key={idx} className="flex items-center text-gray-700">
-                    <div className="text-red-500 mr-4">{feature.icon}</div>
+                    <div className="text-blue-500 mr-4">{feature.icon}</div>
                     <span className="font-semibold">{feature.text}</span>
                   </div>
                 ))}
@@ -156,7 +156,7 @@ export default function ContactUs() {
               <div className="bg-white border border-gray-200 rounded-3xl p-8 shadow-lg">
                 <div className="text-center mb-8">
                   <h2 className="text-3xl font-black mb-2">
-                    Send Us a <span className="text-red-600">Message</span>
+                    Send Us a <span className="text-orange-600">Message</span>
                   </h2>
                   <p className="text-gray-600">Fill out the form below and we'll get back to you within 24 hours</p>
                 </div>
@@ -172,8 +172,8 @@ export default function ContactUs() {
                         type="text"
                         value={formData.name}
                         onChange={handleChange}
-                        required
-                        className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-red-500"
+                        requiorange
+                        className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-orange-500"
                         placeholder="Your full name"
                       />
                     </div>
@@ -189,7 +189,7 @@ export default function ContactUs() {
                         type="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-red-500"
+                        className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-orange-500"
                         placeholder="your.email@example.com"
                       />
                     </div>
@@ -205,7 +205,7 @@ export default function ContactUs() {
                         type="tel"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-red-500"
+                        className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-orange-500"
                         placeholder="+1 (555) 123-4567"
                       />
                     </div>
@@ -219,7 +219,7 @@ export default function ContactUs() {
                       type="text"
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-red-500"
+                      className="w-full px-4 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-orange-500"
                       placeholder="Brief summary of your inquiry"
                     />
                   </div>
@@ -233,9 +233,9 @@ export default function ContactUs() {
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        required
+                        requiorange
                         rows="5"
-                        className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-red-500 resize-none"
+                        className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-orange-500 resize-none"
                         placeholder="Tell us about your project or inquiry..."
                       />
                     </div>
@@ -246,7 +246,7 @@ export default function ContactUs() {
                     <div className={`flex items-center space-x-2 p-4 rounded-xl ${
                       status.includes("Thank") 
                         ? "bg-green-50 border border-green-200 text-green-700" 
-                        : "bg-red-50 border border-red-200 text-red-700"
+                        : "bg-orange-50 border border-orange-200 text-orange-700"
                     }`}>
                       {status.includes("Thank") ? <CheckCircle className="w-5 h-5" /> : <AlertCircle className="w-5 h-5" />}
                       <p className="text-sm font-medium">{status}</p>
@@ -260,7 +260,7 @@ export default function ContactUs() {
                     className={`group w-full py-4 px-8 rounded-xl font-bold text-white transition-all duration-300 transform hover:scale-105 ${
                       loading 
                         ? "bg-gray-400 cursor-not-allowed" 
-                        : "bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 shadow-lg shadow-red-500/25"
+                        : "bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 shadow-lg shadow-orange-500/25"
                     }`}
                   >
                     <span className="flex items-center justify-center">
@@ -284,8 +284,8 @@ export default function ContactUs() {
         </div>
 
         {/* Floating Shapes */}
-        <div className="absolute top-20 right-10 w-20 h-20 border-2 border-red-300 rotate-45 animate-spin" style={{animationDuration: '20s'}} />
-        <div className="absolute bottom-20 left-10 w-16 h-16 bg-gradient-to-br from-red-200 to-transparent rounded-full animate-bounce" />
+        <div className="absolute top-20 right-10 w-20 h-20 border-2 border-orange-300 rotate-45 animate-spin" style={{animationDuration: '20s'}} />
+        <div className="absolute bottom-20 left-10 w-16 h-16 bg-gradient-to-br from-orange-200 to-transparent rounded-full animate-bounce" />
       </section>
 
       <Footer />

@@ -215,7 +215,7 @@ export default function ReservationForm() {
             
             <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-lg">
               <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <Calendar className="w-6 h-6 text-red-600" />
+                <Calendar className="w-6 h-6 text-blue-600" />
                 Reservation Details
               </h3>
               
@@ -230,11 +230,11 @@ export default function ReservationForm() {
                 </div>
                 <div className="flex justify-between items-center py-3 border-b border-gray-100">
                   <span className="text-gray-600">Service:</span>
-                  <span className="text-red-600 font-semibold">{form.reason}</span>
+                  <span className="text-blue-600 font-semibold">{form.reason}</span>
                 </div>
                 <div className="flex justify-between items-center py-3">
                   <span className="text-gray-600">Status:</span>
-                  <span className="text-yellow-600 font-semibold">Pending Confirmation</span>
+                  <span className="text-orange-600 font-semibold">Pending Confirmation</span>
                 </div>
               </div>
             </div>
@@ -242,7 +242,7 @@ export default function ReservationForm() {
             <div className="mt-8 text-center">
               <button
                 onClick={resetForm}
-                className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-200"
+                className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-blue-700 hover:to-orange-600 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-200"
               >
                 Schedule Another Appointment
               </button>
@@ -272,16 +272,16 @@ export default function ReservationForm() {
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-6 py-4">
           <div className="flex items-center justify-center space-x-8">
-            <div className={`flex items-center ${currentStep >= 1 ? 'text-red-600' : 'text-gray-400'}`}>
+            <div className={`flex items-center ${currentStep >= 1 ? 'text-blue-600' : 'text-gray-400'}`}>
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
-                currentStep >= 1 ? 'bg-red-600 text-white' : 'bg-gray-200 text-gray-400'
+                currentStep >= 1 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-400'
               }`}>1</div>
               <span className="ml-2 font-medium">Select Date & Time</span>
             </div>
-            <div className={`w-16 h-1 ${currentStep > 1 ? 'bg-red-600' : 'bg-gray-200'}`}></div>
-            <div className={`flex items-center ${currentStep >= 2 ? 'text-red-600' : 'text-gray-400'}`}>
+            <div className={`w-16 h-1 ${currentStep > 1 ? 'bg-gradient-to-r from-blue-600 to-orange-500' : 'bg-gray-200'}`}></div>
+            <div className={`flex items-center ${currentStep >= 2 ? 'text-orange-600' : 'text-gray-400'}`}>
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
-                currentStep >= 2 ? 'bg-red-600 text-white' : 'bg-gray-200 text-gray-400'
+                currentStep >= 2 ? 'bg-orange-600 text-white' : 'bg-gray-200 text-gray-400'
               }`}>2</div>
               <span className="ml-2 font-medium">Fill Details</span>
             </div>
@@ -305,13 +305,13 @@ export default function ReservationForm() {
                       <div className="flex gap-2">
                         <button
                           onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))}
-                          className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                          className="p-2 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors"
                         >
                           <ChevronLeft className="w-5 h-5 text-gray-600" />
                         </button>
                         <button
                           onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))}
-                          className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                          className="p-2 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors"
                         >
                           <ChevronRight className="w-5 h-5 text-gray-600" />
                         </button>
@@ -340,10 +340,10 @@ export default function ReservationForm() {
                               : isPastDate(date)
                               ? 'text-gray-300 cursor-not-allowed'
                               : selectedDate && selectedDate.toDateString() === date.toDateString()
-                              ? 'bg-red-600 text-white font-semibold'
+                              ? 'bg-blue-600 text-white font-semibold'
                               : isToday(date)
-                              ? 'bg-red-50 text-red-600 font-semibold border border-red-200'
-                              : 'hover:bg-gray-100 text-gray-900'
+                              ? 'bg-orange-50 text-orange-600 font-semibold border border-orange-200'
+                              : 'hover:bg-blue-50 hover:text-blue-600 text-gray-900'
                           }`}
                         >
                           {date && date.getDate()}
@@ -372,8 +372,8 @@ export default function ReservationForm() {
                                   isReserved
                                     ? 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
                                     : selectedTime === time
-                                    ? 'bg-red-600 text-white border-red-600'
-                                    : 'bg-white hover:bg-red-50 text-gray-700 border-gray-200 hover:border-red-300'
+                                    ? 'bg-orange-600 text-white border-orange-600'
+                                    : 'bg-white hover:bg-orange-50 text-gray-700 border-gray-200 hover:border-orange-300'
                                 }`}
                               >
                                 {time} {isReserved && "(Reserved)"}
@@ -396,7 +396,7 @@ export default function ReservationForm() {
                   <div className="mt-8 text-center">
                     <button
                       onClick={proceedToForm}
-                      className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-200 flex items-center gap-2 mx-auto"
+                      className="bg-gradient-to-r from-orange-500 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-200 flex items-center gap-2 mx-auto"
                     >
                       Continue to Details
                       <ArrowRight className="w-5 h-5" />
@@ -412,13 +412,13 @@ export default function ReservationForm() {
               <div className="p-8">
                 <div className="mb-8">
                   <h2 className="text-2xl font-bold text-gray-900 mb-2">Complete Your Booking</h2>
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                    <p className="text-red-800 font-medium">
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <p className="text-blue-800 font-medium">
                       {formatDate(selectedDate)} at {selectedTime}
                     </p>
                     <button
                       onClick={() => setCurrentStep(1)}
-                      className="text-red-600 text-sm hover:underline mt-1"
+                      className="text-blue-600 text-sm hover:underline mt-1"
                     >
                       Change date/time
                     </button>
@@ -426,8 +426,8 @@ export default function ReservationForm() {
                 </div>
 
                 {message && (
-                  <div className="mb-6 p-4 rounded-lg bg-red-50 border border-red-200">
-                    <p className="text-red-800 flex items-center gap-2">
+                  <div className="mb-6 p-4 rounded-lg bg-orange-50 border border-orange-200">
+                    <p className="text-orange-800 flex items-center gap-2">
                       <AlertCircle className="w-5 h-5" />
                       {message}
                     </p>
@@ -447,12 +447,12 @@ export default function ReservationForm() {
                       value={form.name}
                       onChange={handleChange}
                       placeholder="Enter your full name"
-                      className={`w-full px-4 py-3 border rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all ${
-                        errors.name ? 'border-red-500' : 'border-gray-300'
+                      className={`w-full px-4 py-3 border rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all ${
+                        errors.name ? 'border-orange-500' : 'border-gray-300'
                       }`}
                     />
                     {errors.name && (
-                      <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+                      <p className="mt-1 text-sm text-orange-600 flex items-center gap-1">
                         <AlertCircle className="w-4 h-4" />
                         {errors.name}
                       </p>
@@ -471,12 +471,12 @@ export default function ReservationForm() {
                       value={form.phone}
                       onChange={handleChange}
                       placeholder="Enter your phone number"
-                      className={`w-full px-4 py-3 border rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all ${
-                        errors.phone ? 'border-red-500' : 'border-gray-300'
+                      className={`w-full px-4 py-3 border rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all ${
+                        errors.phone ? 'border-orange-500' : 'border-gray-300'
                       }`}
                     />
                     {errors.phone && (
-                      <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+                      <p className="mt-1 text-sm text-orange-600 flex items-center gap-1">
                         <AlertCircle className="w-4 h-4" />
                         {errors.phone}
                       </p>
@@ -495,12 +495,12 @@ export default function ReservationForm() {
                       value={form.email}
                       onChange={handleChange}
                       placeholder="Enter your email address"
-                      className={`w-full px-4 py-3 border rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all ${
-                        errors.email ? 'border-red-500' : 'border-gray-300'
+                      className={`w-full px-4 py-3 border rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all ${
+                        errors.email ? 'border-orange-500' : 'border-gray-300'
                       }`}
                     />
                     {errors.email && (
-                      <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+                      <p className="mt-1 text-sm text-orange-600 flex items-center gap-1">
                         <AlertCircle className="w-4 h-4" />
                         {errors.email}
                       </p>
@@ -519,12 +519,12 @@ export default function ReservationForm() {
                       value={form.carMatricule}
                       onChange={handleChange}
                       placeholder="Enter your car matricule number"
-                      className={`w-full px-4 py-3 border rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all ${
-                        errors.carMatricule ? 'border-red-500' : 'border-gray-300'
+                      className={`w-full px-4 py-3 border rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all ${
+                        errors.carMatricule ? 'border-orange-500' : 'border-gray-300'
                       }`}
                     />
                     {errors.carMatricule && (
-                      <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+                      <p className="mt-1 text-sm text-orange-600 flex items-center gap-1">
                         <AlertCircle className="w-4 h-4" />
                         {errors.carMatricule}
                       </p>
@@ -541,7 +541,7 @@ export default function ReservationForm() {
                       name="reason"
                       value={form.reason}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                     >
                       {reasons.map((reason) => (
                         <option key={reason} value={reason}>
@@ -559,7 +559,7 @@ export default function ReservationForm() {
                     className={`w-full py-4 px-6 font-semibold text-lg rounded-lg transition-all duration-200 flex items-center justify-center gap-3 ${
                       loading
                         ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                        : 'bg-red-600 hover:bg-red-700 text-white shadow-lg hover:shadow-xl'
+                        : 'bg-gradient-to-r from-orange-500 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white shadow-lg hover:shadow-xl'
                     }`}
                   >
                     {loading ? (

@@ -15,10 +15,10 @@ export default function CommandForm({ product, quantity, onClose }) {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!name.trim()) newErrors.name = "Name is required";
+    if (!name.trim()) newErrors.name = "Name is requiorange";
     else if (name.trim().length < 2) newErrors.name = "Name must be at least 2 characters";
 
-    if (!phone.trim()) newErrors.phone = "Phone number is required";
+    if (!phone.trim()) newErrors.phone = "Phone number is requiorange";
     else if (!/^[+]?[\d\s\-\(\)]{8,}$/.test(phone.trim()))
       newErrors.phone = "Please enter a valid phone number";
 
@@ -77,7 +77,7 @@ export default function CommandForm({ product, quantity, onClose }) {
           </div>
           <div className="flex justify-between text-sm">
             <span>Total:</span>
-            <span className="font-bold text-red-600">${totalPrice}</span>
+            <span className="font-bold text-orange-600">${totalPrice}</span>
           </div>
         </div>
         <p className="text-xs text-gray-400">Closing automatically...</p>
@@ -90,7 +90,7 @@ export default function CommandForm({ product, quantity, onClose }) {
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b">
         <h2 className="text-lg font-semibold flex items-center gap-2">
-          <ShoppingCart className="w-5 h-5 text-red-500" />
+          <ShoppingCart className="w-5 h-5 text-orange-500" />
           Place Order
         </h2>
         <button
@@ -109,7 +109,7 @@ export default function CommandForm({ product, quantity, onClose }) {
         </div>
         <div className="flex justify-between text-sm">
           <span className="text-gray-600">Unit Price:</span>
-          <span className="text-red-600 font-semibold">${product.price}</span>
+          <span className="text-orange-600 font-semibold">${product.price}</span>
         </div>
         <div className="flex justify-between text-sm">
           <span className="text-gray-600">Quantity:</span>
@@ -134,11 +134,11 @@ export default function CommandForm({ product, quantity, onClose }) {
               if (errors.name) setErrors((prev) => ({ ...prev, name: null }));
             }}
             className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 text-sm ${
-              errors.name ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-red-500"
+              errors.name ? "border-orange-500 focus:ring-orange-500" : "border-gray-300 focus:ring-orange-500"
             }`}
           />
           {errors.name && (
-            <p className="mt-1 text-xs text-red-500 flex items-center gap-1">
+            <p className="mt-1 text-xs text-orange-500 flex items-center gap-1">
               <AlertCircle className="w-3 h-3" />
               {errors.name}
             </p>
@@ -160,11 +160,11 @@ export default function CommandForm({ product, quantity, onClose }) {
               if (errors.phone) setErrors((prev) => ({ ...prev, phone: null }));
             }}
             className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 text-sm ${
-              errors.phone ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-red-500"
+              errors.phone ? "border-orange-500 focus:ring-orange-500" : "border-gray-300 focus:ring-orange-500"
             }`}
           />
           {errors.phone && (
-            <p className="mt-1 text-xs text-red-500 flex items-center gap-1">
+            <p className="mt-1 text-xs text-orange-500 flex items-center gap-1">
               <AlertCircle className="w-3 h-3" />
               {errors.phone}
             </p>
@@ -174,14 +174,14 @@ export default function CommandForm({ product, quantity, onClose }) {
         {/* Total Price */}
         <div className="bg-gray-50 border rounded-md p-3 flex justify-between">
           <span className="flex items-center gap-1 text-gray-700">
-            <DollarSign className="w-4 h-4 text-red-500" /> Total:
+            <DollarSign className="w-4 h-4 text-orange-500" /> Total:
           </span>
-          <span className="text-lg font-bold text-red-600">${totalPrice}</span>
+          <span className="text-lg font-bold text-orange-600">${totalPrice}</span>
         </div>
 
         {/* Submit Error */}
         {errors.submit && (
-          <div className="bg-red-50 border border-red-200 rounded-md p-2 text-xs text-red-500 flex items-center gap-1">
+          <div className="bg-orange-50 border border-orange-200 rounded-md p-2 text-xs text-orange-500 flex items-center gap-1">
             <AlertCircle className="w-3 h-3" />
             {errors.submit}
           </div>
@@ -202,7 +202,7 @@ export default function CommandForm({ product, quantity, onClose }) {
             className={`flex-1 py-2 px-4 rounded-md text-white text-sm font-medium flex items-center justify-center gap-1 ${
               loading
                 ? "bg-gray-400 cursor-not-allowed"
-                : "bg-red-600 hover:bg-red-500"
+                : "bg-orange-600 hover:bg-orange-500"
             }`}
           >
             {loading ? (

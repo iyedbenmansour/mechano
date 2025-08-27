@@ -118,8 +118,8 @@ export default function ServicePage() {
     {
       icon: <Mail className="w-5 h-5" />,
       title: "Email Us",
-      info: "service@autopro.com",
-      action: () => window.location.href = "mailto:service@autopro.com"
+      info: "service@Silad.com",
+      action: () => window.location.href = "mailto:service@Silad.com"
     },
     {
       icon: <MapPin className="w-5 h-5" />,
@@ -134,45 +134,44 @@ export default function ServicePage() {
       <Navbar />
       
       {/* Hero Section */}
-    <section
-  id="hero"
-  className="relative min-h-screen flex items-center bg-gray-900 bg-cover bg-center"
-  style={{ backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVdFWToo8o2Gn3Pc0O-iYF8nVChyOCQyFYstSnKKaw2LoJuxGrPSM5Z1H3gp9s3UqWwuM&usqp=CAU')" }} // change path
->
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+      <section
+        id="hero"
+        className="relative min-h-screen flex items-center bg-gray-900 bg-cover bg-center"
+        style={{ backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVdFWToo8o2Gn3Pc0O-iYF8nVChyOCQyFYstSnKKaw2LoJuxGrPSM5Z1H3gp9s3UqWwuM&usqp=CAU')" }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-800 to-transparent opacity-80"></div>
 
-  <div className="container mx-auto px-6 relative z-10 max-w-4xl">
-    <h1 className="text-5xl font-semibold mb-6 leading-tight text-white">
-      Our <span className="text-red-600">Professional</span> Services
-    </h1>
-    <div className="w-16 h-0.5 bg-red-600 mb-6"></div>
-    <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-      Experience the pinnacle of mechanical excellence through our comprehensive suite of 
-      professional services and premium parts solutions.
-    </p>
-    <div className="flex flex-wrap gap-4">
-      <button 
-        onClick={() => handleNavigation("/reservation")}
-        className="bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300">
-        Schedule Service
-      </button>
-      <button 
-        onClick={() => handleNavigation("/product")}
-        className="border border-white hover:border-red-600 hover:text-red-600 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300">
-        Browse Parts
-      </button>
-    </div>
-  </div>
-</section>
-
+        <div className="container mx-auto px-6 relative z-10 max-w-4xl">
+          <h1 className="text-5xl font-semibold mb-6 leading-tight text-white">
+            Our <span className="text-orange-400">Professional</span> Services
+          </h1>
+          <div className="w-16 h-0.5 bg-orange-500 mb-6"></div>
+          <p className="text-xl text-gray-200 mb-8 leading-relaxed">
+            Experience the pinnacle of mechanical excellence through our comprehensive suite of 
+            professional services and premium parts solutions.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <button 
+              onClick={() => handleNavigation("/reservation")}
+              className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300 shadow-lg hover:shadow-xl">
+              Schedule Service
+            </button>
+            <button 
+              onClick={() => handleNavigation("/product")}
+              className="border border-white hover:border-orange-400 hover:text-orange-400 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300">
+              Browse Parts
+            </button>
+          </div>
+        </div>
+      </section>
 
       {/* Main Services Section */}
       <section id="main-services" className="py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-semibold">Primary Services</h2>
-            <div className="w-16 h-0.5 bg-red-600 mx-auto my-4"></div>
+            <h2 className="text-4xl font-semibold text-blue-900">Primary Services</h2>
+            <div className="w-16 h-0.5 bg-orange-500 mx-auto my-4"></div>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Our core service offerings to meet your automotive needs
             </p>
@@ -182,20 +181,20 @@ export default function ServicePage() {
             {mainServices.map((service, index) => (
               <div
                 key={service.id}
-                className={`bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 overflow-hidden ${isVisible['main-services'] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+                className={`bg-gradient-to-br from-blue-50 to-orange-50 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 border border-blue-200 hover:border-orange-200 overflow-hidden ${isVisible['main-services'] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
                 style={{ transitionDelay: `${index * 0.3}s` }}
               >
                 <div className="p-8">
                   <div className="flex justify-between items-start mb-6">
-                    <div className="text-red-600">
+                    <div className="text-blue-600">
                       {service.icon}
                     </div>
-                    <div className="text-sm font-medium text-gray-500">
+                    <div className="text-sm font-medium text-orange-600 bg-orange-50 px-3 py-1 rounded-full border border-orange-200">
                       {service.subtitle}
                     </div>
                   </div>
                   
-                  <h3 className="text-2xl font-semibold mb-4">{service.title}</h3>
+                  <h3 className="text-2xl font-semibold mb-4 text-blue-900">{service.title}</h3>
                   
                   <p className="text-gray-600 mb-6 leading-relaxed">
                     {service.description}
@@ -204,7 +203,7 @@ export default function ServicePage() {
                   <div className="space-y-3 mb-8">
                     {service.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center text-gray-600">
-                        <ChevronRight className="w-4 h-4 text-red-600 mr-2 flex-shrink-0" />
+                        <ChevronRight className="w-4 h-4 text-orange-500 mr-2 flex-shrink-0" />
                         <span>{feature}</span>
                       </div>
                     ))}
@@ -212,7 +211,7 @@ export default function ServicePage() {
                   
                   <button 
                     onClick={() => handleNavigation(service.route)}
-                    className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-md transition-colors duration-300 flex items-center justify-center"
+                    className="w-full bg-gradient-to-r from-blue-600 to-orange-500 hover:from-blue-700 hover:to-orange-600 text-white font-medium py-3 px-6 rounded-md transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl"
                   >
                     {service.buttonText}
                     <ArrowRight className="ml-2 w-5 h-5" />
@@ -225,11 +224,11 @@ export default function ServicePage() {
       </section>
 
       {/* Additional Services */}
-      <section id="additional" className="py-24 bg-gray-50">
+      <section id="additional" className="py-24 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-semibold">Specialized Services</h2>
-            <div className="w-16 h-0.5 bg-red-600 mx-auto my-4"></div>
+            <h2 className="text-4xl font-semibold text-blue-900">Specialized Services</h2>
+            <div className="w-16 h-0.5 bg-orange-500 mx-auto my-4"></div>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Additional specialized solutions for your specific requirements
             </p>
@@ -239,12 +238,12 @@ export default function ServicePage() {
             {additionalServices.map((service, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-md shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200"
+                className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-blue-200 hover:border-orange-200"
               >
-                <div className="text-red-600 mb-4">
+                <div className="text-blue-600 mb-4">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-3">
+                <h3 className="text-xl font-semibold mb-3 text-blue-900">
                   {service.title}
                 </h3>
                 <p className="text-gray-600 mb-4">
@@ -253,12 +252,11 @@ export default function ServicePage() {
                 <div className="space-y-2 mb-6">
                   {service.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center text-gray-600 text-sm">
-                      <ChevronRight className="w-4 h-4 text-red-600 mr-2" />
+                      <ChevronRight className="w-4 h-4 text-orange-500 mr-2" />
                       {feature}
                     </div>
                   ))}
                 </div>
-           
               </div>
             ))}
           </div>
@@ -266,11 +264,11 @@ export default function ServicePage() {
       </section>
 
       {/* Contact Information */}
-      <section className="py-16 bg-white border-t border-gray-100">
+      <section className="py-16 bg-white border-t border-blue-100">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold">Get In Touch</h2>
-            <div className="w-16 h-0.5 bg-red-600 mx-auto my-4"></div>
+            <h2 className="text-3xl font-semibold text-blue-900">Get In Touch</h2>
+            <div className="w-16 h-0.5 bg-orange-500 mx-auto my-4"></div>
             <p className="text-gray-600">Reach out to us for service inquiries or consultations</p>
           </div>
           
@@ -279,14 +277,14 @@ export default function ServicePage() {
               <button
                 key={index}
                 onClick={info.action}
-                className="bg-gray-50 p-6 rounded-md shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 text-left w-full"
+                className="bg-gradient-to-br from-blue-50 to-orange-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-blue-200 hover:border-orange-300 text-left w-full"
               >
                 <div className="flex items-center space-x-4">
-                  <div className="bg-red-100 p-3 rounded-full text-red-600">
+                  <div className="bg-gradient-to-r from-blue-100 to-orange-100 p-3 rounded-full text-blue-600">
                     {info.icon}
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium">{info.title}</h3>
+                    <h3 className="text-lg font-medium text-blue-900">{info.title}</h3>
                     <p className="text-gray-600">{info.info}</p>
                   </div>
                 </div>
@@ -297,22 +295,22 @@ export default function ServicePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gray-900 text-white">
+      <section className="py-16 bg-gradient-to-r from-blue-900 to-blue-800 text-white">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-semibold mb-6">Ready For Service?</h2>
-          <div className="w-16 h-0.5 bg-red-600 mx-auto mb-6"></div>
+          <div className="w-16 h-0.5 bg-orange-500 mx-auto mb-6"></div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
               onClick={() => handleNavigation("/product")}
-              className="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300 flex items-center justify-center"
+              className="bg-transparent border-2 border-white hover:bg-white hover:text-blue-900 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300 flex items-center justify-center"
             >
               Browse Parts
               <ShoppingCart className="ml-2 w-5 h-5" />
             </button>
             <button 
               onClick={() => handleNavigation("/reservation")}
-              className="bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300 flex items-center justify-center"
+              className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300 flex items-center justify-center shadow-lg hover:shadow-xl"
             >
               Book Service
               <Calendar className="ml-2 w-5 h-5" />
