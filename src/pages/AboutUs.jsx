@@ -7,42 +7,42 @@ export default function AboutUs() {
   const [activeTab, setActiveTab] = useState('history');
 
   const stats = [
-    { icon: <Briefcase className="w-8 h-8 text-blue-600" />, label: "Products Developed", value: "200+" },
-    { icon: <Users className="w-8 h-8 text-blue-600" />, label: "Happy Clients", value: "500+" },
-    { icon: <Award className="w-8 h-8 text-blue-600" />, label: "Quality Certifications", value: "10+" },
-    { icon: <Leaf className="w-8 h-8 text-blue-600" />, label: "Years of Experience", value: "25+" },
+    { icon: <Briefcase className="w-8 h-8 text-blue-600" />, label: "Produits Développés", value: "200+" },
+    { icon: <Users className="w-8 h-8 text-blue-600" />, label: "Clients Heureux", value: "500+" },
+    { icon: <Award className="w-8 h-8 text-blue-600" />, label: "Certifications de Qualité", value: "10+" },
+    { icon: <Leaf className="w-8 h-8 text-blue-600" />, label: "Années d'Expérience", value: "25+" },
   ];
 
   const timeline = [
-    { year: "1998", title: "Company Founded", description: "SILAD was established in Tunisia as a specialist in lubricants and automotive accessories." },
-    { year: "2003", title: "Product Range Expansion", description: "Expanded our product line to include industrial lubricants and specialized automotive fluids." },
-    { year: "2008", title: "North African Market Entry", description: "Successfully entered new markets across North Africa, including Algeria, Morocco, and Libya." },
-    { year: "2012", title: "Quality Certification", description: "Received ISO 9001 certification for our commitment to quality management systems." },
-    { year: "2016", title: "Advanced Lubricant Development", description: "Launched our premium line of synthetic lubricants for high-performance vehicles and machinery." },
-    { year: "2020", title: "Environmental Commitment", description: "Introduced eco-friendly lubricant options and sustainable packaging initiatives." },
-    { year: "2024", title: "Digital Transformation", description: "Implemented comprehensive digital systems for improved customer service and supply chain management." }
+    { year: "1998", title: "Fondation de l'Entreprise", description: "SILAD a été créée en Tunisie en tant que spécialiste des lubrifiants et accessoires automobiles." },
+    { year: "2003", title: "Extension de la Gamme de Produits", description: "Nous avons élargi notre gamme de produits pour inclure des lubrifiants industriels et des fluides automobiles spécialisés." },
+    { year: "2008", title: "Entrée sur le Marché Nord-Africain", description: "Nous avons réussi à pénétrer de nouveaux marchés en Afrique du Nord, notamment en Algérie, au Maroc et en Libye." },
+    { year: "2012", title: "Certification de Qualité", description: "Obtention de la certification ISO 9001 pour notre engagement envers les systèmes de gestion de la qualité." },
+    { year: "2016", title: "Développement de Lubrifiants Avancés", description: "Lancement de notre gamme premium de lubrifiants synthétiques pour les véhicules et machines de haute performance." },
+    { year: "2020", title: "Engagement Environnemental", description: "Introduction d'options de lubrifiants écologiques et d'initiatives d'emballage durable." },
+    { year: "2024", title: "Transformation Numérique", description: "Mise en œuvre de systèmes numériques complets pour améliorer le service client et la gestion de la chaîne d'approvisionnement." }
   ];
 
   const leadership = [
-    { name: "Mohamed Ben Ali", position: "Chief Executive Officer", background: "With over 30 years in the lubricants industry, Mohamed leads SILAD with vision and expertise. His extensive knowledge of oil formulations and market dynamics has positioned SILAD as a leader in the Tunisian market." },
-    { name: "Leila Trabelsi", position: "Chief Technical Officer", background: "Leila brings 20 years of technical innovation to our team. Her specialization in lubricant chemistry has resulted in our most successful product formulations and quality control protocols." },
-    { name: "Amir Kaddour", position: "Director of Operations", background: "Amir oversees all operational aspects of our business. His extensive experience in manufacturing and supply chain management ensures consistent product quality and timely delivery." },
-    { name: "Samia Bouazizi", position: "Head of Research & Development", background: "Leading our R&D initiatives, Samia has developed several proprietary lubricant formulations that have set new industry standards for performance and durability." }
+    { name: "Mohamed Ben Ali", position: "Directeur Général", background: "Avec plus de 30 ans dans l'industrie des lubrifiants, Mohamed dirige SILAD avec vision et expertise. Sa connaissance approfondie des formulations d'huiles et des dynamiques du marché a positionné SILAD comme un leader sur le marché tunisien." },
+    { name: "Leila Trabelsi", position: "Directrice Technique", background: "Leila apporte 20 ans d'innovation technique à notre équipe. Sa spécialisation en chimie des lubrifiants a donné lieu à nos formulations de produits les plus réussies et à nos protocoles de contrôle qualité." },
+    { name: "Amir Kaddour", position: "Directeur des Opérations", background: "Amir supervise tous les aspects opérationnels de notre entreprise. Sa vaste expérience en fabrication et en gestion de la chaîne d'approvisionnement assure une qualité de produit constante et une livraison rapide." },
+    { name: "Samia Bouazizi", position: "Chef de la Recherche & Développement", background: "À la tête de nos initiatives de R&D, Samia a développé plusieurs formulations de lubrifiants exclusives qui ont établi de nouvelles normes de performance et de durabilité dans l'industrie." }
   ];
 
   const certifications = [
-    { title: "ISO 9001:2015", description: "Quality Management System certification ensuring consistent, high-quality product manufacturing" },
-    { title: "ISO 14001:2015", description: "Environmental Management System certification demonstrating our commitment to sustainability" },
-    { title: "API Certification", description: "American Petroleum Institute certification for lubricant quality standards" },
-    { title: "ACEA Compliance", description: "European Automobile Manufacturers Association standards compliance for automotive lubricants" },
-    { title: "Tunisian Standards Certification", description: "NT certification for meeting national quality standards" }
+    { title: "ISO 9001:2015", description: "Certification du système de gestion de la qualité garantissant une fabrication de produits cohérente et de haute qualité." },
+    { title: "ISO 14001:2015", description: "Certification du système de gestion environnementale démontrant notre engagement envers le développement durable." },
+    { title: "Certification API", description: "Certification de l'American Petroleum Institute pour les normes de qualité des lubrifiants." },
+    { title: "Conformité ACEA", description: "Conformité aux normes de l'Association des Constructeurs Européens d'Automobiles pour les lubrifiants automobiles." },
+    { title: "Certification des Normes Tunisiennes", description: "Certification NT pour le respect des normes de qualité nationales." }
   ];
 
   const services = [
-    { icon: <Globe className="w-12 h-12 text-blue-600" />, title: "Automotive Lubricants", description: "High-performance engine oils, transmission fluids, and specialty automotive lubricants designed for optimal vehicle performance." },
-    { icon: <Shield className="w-12 h-12 text-blue-600" />, title: "Industrial Solutions", description: "Specialized lubricants for manufacturing equipment, hydraulic systems, and industrial machinery to maximize efficiency and longevity." },
-    { icon: <Target className="w-12 h-12 text-blue-600" />, title: "Technical Consultation", description: "Expert advice on lubricant selection, maintenance scheduling, and performance optimization for fleet managers and industrial clients." },
-    { icon: <Globe className="w-12 h-12 text-blue-600" />, title: "Distribution Network", description: "Extensive distribution capabilities throughout North Africa, ensuring timely delivery and consistent product availability." }
+    { icon: <Globe className="w-12 h-12 text-blue-600" />, title: "Lubrifiants Automobiles", description: "Huiles moteur, fluides de transmission et lubrifiants automobiles spécialisés de haute performance conçus pour une performance optimale des véhicules." },
+    { icon: <Shield className="w-12 h-12 text-blue-600" />, title: "Solutions Industrielles", description: "Lubrifiants spécialisés pour les équipements de fabrication, les systèmes hydrauliques et les machines industrielles afin de maximiser l'efficacité et la longévité." },
+    { icon: <Target className="w-12 h-12 text-blue-600" />, title: "Conseil Technique", description: "Conseils d'experts sur la sélection des lubrifiants, la planification de l'entretien et l'optimisation des performances pour les gestionnaires de flotte et les clients industriels." },
+    { icon: <Globe className="w-12 h-12 text-blue-600" />, title: "Réseau de Distribution", description: "Capacités de distribution étendues dans toute l'Afrique du Nord, garantissant une livraison rapide et une disponibilité constante des produits." }
   ];
 
   return (
@@ -53,17 +53,17 @@ export default function AboutUs() {
       <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-orange-700 to-orange-500 text-white text-center px-6">
         <div className="max-w-4xl z-10">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-6 drop-shadow-lg">
-            About <span className="text-yellow-300">SILAD</span>
+            À Propos de <span className="text-yellow-300">SILAD</span>
           </h1>
           <p className="text-xl md:text-2xl text-orange-100 mb-8">
-            Société Internationale de Lubrifiants et Accessoires Différents — delivering premium lubricant solutions across North Africa since 1998.
+            Société Internationale de Lubrifiants et Accessoires Différents — offrant des solutions de lubrifiants premium à travers l'Afrique du Nord depuis 1998.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href="#mission" className="bg-white text-orange-600 hover:bg-orange-50 transition duration-300 py-3 px-6 rounded-full font-bold shadow-md">
-              Our Mission
+              Notre Mission
             </a>
             <a href="#contact" className="bg-transparent hover:bg-orange-700 border-2 border-white transition duration-300 py-3 px-6 rounded-full font-bold">
-              Contact Us
+              Contactez-nous
             </a>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function AboutUs() {
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+                          linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
             backgroundSize: "40px 40px",
           }}
         />
@@ -100,29 +100,29 @@ export default function AboutUs() {
         {/* Mission & Vision */}
         <section id="mission" className="grid md:grid-cols-2 gap-12">
           <div className="p-8 bg-gray-50 rounded-2xl shadow-md hover:shadow-lg transition duration-300">
-            <h2 className="text-3xl font-bold mb-6 text-orange-600">Our Mission</h2>
+            <h2 className="text-3xl font-bold mb-6 text-orange-600">Notre Mission</h2>
             <p className="text-lg leading-relaxed text-gray-700">
-              At <strong>SILAD</strong>, our mission is to provide high-quality, reliable, and innovative lubricant solutions tailored to the specific needs of our clients across automotive and industrial sectors. We strive for excellence in every product, ensuring optimal performance, protection, and efficiency.
+              Chez <strong>SILAD</strong>, notre mission est de fournir des solutions de lubrifiants de haute qualité, fiables et innovantes, adaptées aux besoins spécifiques de nos clients dans les secteurs automobile et industriel. Nous visons l'excellence dans chaque produit, garantissant une performance, une protection et une efficacité optimales.
             </p>
             <p className="text-lg leading-relaxed text-gray-700 mt-4">
-              We are committed to delivering lubricants that not only meet but exceed industry standards, while maintaining the highest level of integrity and professionalism in all our interactions with clients, partners, and employees.
+              Nous nous engageons à livrer des lubrifiants qui non seulement respectent, mais dépassent les normes de l'industrie, tout en maintenant le plus haut niveau d'intégrité et de professionnalisme dans toutes nos interactions avec les clients, les partenaires et les employés.
             </p>
           </div>
 
           <div className="p-8 bg-gray-50 rounded-2xl shadow-md hover:shadow-lg transition duration-300">
-            <h2 className="text-3xl font-bold mb-6 text-orange-600">Our Vision</h2>
+            <h2 className="text-3xl font-bold mb-6 text-orange-600">Notre Vision</h2>
             <p className="text-lg leading-relaxed text-gray-700">
-              We aspire to be the leading lubricant provider in North Africa, recognized for our technical excellence, innovative formulations, and unwavering commitment to quality.
+              Nous aspirons à être le principal fournisseur de lubrifiants en Afrique du Nord, reconnu pour notre excellence technique, nos formulations innovantes et notre engagement inébranlable envers la qualité.
             </p>
             <p className="text-lg leading-relaxed text-gray-700 mt-4">
-              Our vision encompasses a future where <strong>SILAD</strong> sets the industry standard for lubricant performance, environmentally responsible practices, and customer satisfaction, while fostering a culture of continuous improvement and professional growth for our team members.
+              Notre vision englobe un avenir où <strong>SILAD</strong> établit la norme de l'industrie en matière de performance des lubrifiants, de pratiques respectueuses de l'environnement et de satisfaction client, tout en favorisant une culture d'amélioration continue et de croissance professionnelle pour les membres de notre équipe.
             </p>
           </div>
         </section>
-
+        
         {/* Services Section */}
         <section className="py-8">
-          <h2 className="text-4xl font-bold mb-12 text-center text-orange-600">Our Products & Services</h2>
+          <h2 className="text-4xl font-bold mb-12 text-center text-orange-600">Nos Produits & Services</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <div key={index} className="p-6 bg-white rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition duration-300 flex flex-col items-center text-center">
@@ -136,27 +136,27 @@ export default function AboutUs() {
 
         {/* Values */}
         <section className="p-10 bg-gray-50 rounded-2xl shadow-md hover:shadow-lg transition duration-300">
-          <h2 className="text-4xl font-bold mb-10 text-orange-600 text-center">Our Core Values</h2>
+          <h2 className="text-4xl font-bold mb-10 text-orange-600 text-center">Nos Valeurs Fondamentales</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition duration-300">
               <div className="flex items-center mb-4">
                 <Star className="w-6 h-6 text-blue-600 mr-3" />
-                <h3 className="text-xl font-bold text-gray-900">Quality</h3>
+                <h3 className="text-xl font-bold text-gray-900">Qualité</h3>
               </div>
               <p className="text-gray-700">
-                We pursue excellence in every formulation, ensuring that our lubricants meet the highest standards of performance, protection, and longevity for vehicles and machinery.
+                Nous recherchons l'excellence dans chaque formulation, garantissant que nos lubrifiants répondent aux normes les plus élevées de performance, de protection et de longévité pour les véhicules et les machines.
               </p>
             </div>
             
             <div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition duration-300">
               <div className="flex items-center mb-4">
                 <Shield className="w-6 h-6 text-blue-600 mr-3" />
-                <h3 className="text-xl font-bold text-gray-900">Integrity</h3>
+                <h3 className="text-xl font-bold text-gray-900">Intégrité</h3>
               </div>
               <p className="text-gray-700">
-                We operate with transparency, honesty, and ethical principles, building lasting relationships
-                based on trust and mutual respect with our clients, distributors, and team members.
+                Nous agissons avec transparence, honnêteté et principes éthiques, en construisant des relations durables
+                basées sur la confiance et le respect mutuel avec nos clients, distributeurs et membres de l'équipe.
               </p>
             </div>
             
@@ -166,37 +166,37 @@ export default function AboutUs() {
                 <h3 className="text-xl font-bold text-gray-900">Innovation</h3>
               </div>
               <p className="text-gray-700">
-                We embrace research and development, continuously seeking new formulations, technologies, and solutions to address evolving lubrication challenges and improve our products.
+                Nous privilégions la recherche et le développement, en recherchant continuellement de nouvelles formulations, technologies et solutions pour relever les défis de lubrification en constante évolution et améliorer nos produits.
               </p>
             </div>
             
             <div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition duration-300">
               <div className="flex items-center mb-4">
                 <Users className="w-6 h-6 text-blue-600 mr-3" />
-                <h3 className="text-xl font-bold text-gray-900">Customer Focus</h3>
+                <h3 className="text-xl font-bold text-gray-900">Orientation Client</h3>
               </div>
               <p className="text-gray-700">
-                We prioritize the needs of our customers, offering tailored solutions, technical support, and responsive service to ensure complete satisfaction and optimal performance.
+                Nous priorisons les besoins de nos clients, en proposant des solutions sur mesure, un support technique et un service réactif pour garantir une satisfaction totale et des performances optimales.
               </p>
             </div>
             
             <div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition duration-300">
               <div className="flex items-center mb-4">
                 <Leaf className="w-6 h-6 text-blue-600 mr-3" />
-                <h3 className="text-xl font-bold text-gray-900">Sustainability</h3>
+                <h3 className="text-xl font-bold text-gray-900">Durabilité</h3>
               </div>
               <p className="text-gray-700">
-                We are committed to environmental responsibility, developing lubricant formulations and packaging solutions that minimize ecological impact while maximizing performance.
+                Nous sommes engagés envers la responsabilité environnementale, en développant des formulations de lubrifiants et des solutions d'emballage qui minimisent l'impact écologique tout en maximisant les performances.
               </p>
             </div>
             
             <div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition duration-300">
               <div className="flex items-center mb-4">
                 <Clock className="w-6 h-6 text-blue-600 mr-3" />
-                <h3 className="text-xl font-bold text-gray-900">Reliability</h3>
+                <h3 className="text-xl font-bold text-gray-900">Fiabilité</h3>
               </div>
               <p className="text-gray-700">
-                We deliver on our promises, ensuring consistent quality, timely availability, and dependability in all our products and services, building confidence with every purchase.
+                Nous tenons nos promesses, garantissant une qualité constante, une disponibilité rapide et une fiabilité dans tous nos produits et services, renforçant la confiance à chaque achat.
               </p>
             </div>
           </div>
@@ -214,7 +214,7 @@ export default function AboutUs() {
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 } whitespace-nowrap py-4 px-6 border-b-2 font-medium text-lg`}
               >
-                Our History
+                Notre Histoire
               </button>
               <button
                 onClick={() => setActiveTab('leadership')}
@@ -224,7 +224,7 @@ export default function AboutUs() {
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 } whitespace-nowrap py-4 px-6 border-b-2 font-medium text-lg`}
               >
-                Leadership Team
+                Équipe de Direction
               </button>
               <button
                 onClick={() => setActiveTab('certifications')}
@@ -242,7 +242,7 @@ export default function AboutUs() {
           <div className="p-8">
             {activeTab === 'history' && (
               <div>
-                <h2 className="text-3xl font-bold mb-8 text-orange-600">Our Journey Through the Years</h2>
+                <h2 className="text-3xl font-bold mb-8 text-orange-600">Notre Parcours au Fil des Ans</h2>
                 <div className="space-y-8">
                   {timeline.map((event, index) => (
                     <div key={index} className="flex">
@@ -266,7 +266,7 @@ export default function AboutUs() {
 
             {activeTab === 'leadership' && (
               <div>
-                <h2 className="text-3xl font-bold mb-8 text-orange-600">Our Leadership Team</h2>
+                <h2 className="text-3xl font-bold mb-8 text-orange-600">Notre Équipe de Direction</h2>
                 <div className="grid md:grid-cols-2 gap-8">
                   {leadership.map((person, index) => (
                     <div key={index} className="bg-gray-50 p-6 rounded-xl">
@@ -281,7 +281,7 @@ export default function AboutUs() {
 
             {activeTab === 'certifications' && (
               <div>
-                <h2 className="text-3xl font-bold mb-8 text-orange-600">Industry Certifications</h2>
+                <h2 className="text-3xl font-bold mb-8 text-orange-600">Certifications de l'Industrie</h2>
                 <div className="space-y-6">
                   {certifications.map((cert, index) => (
                     <div key={index} className="flex items-start">
@@ -298,27 +298,24 @@ export default function AboutUs() {
           </div>
         </section>
 
-    
-
         {/* Regional Presence */}
         <section className="p-10 bg-gray-50 rounded-2xl shadow-md">
-          <h2 className="text-4xl font-bold mb-8 text-orange-600 text-center">Our Regional Presence</h2>
+          <h2 className="text-4xl font-bold mb-8 text-orange-600 text-center">Notre Présence Régionale</h2>
           <p className="text-lg text-center text-gray-700 max-w-3xl mx-auto mb-10">
-            With strategic operations across North Africa, SILAD delivers premium lubricant products to automotive and industrial
-            clients throughout the region, combining technical expertise with local market knowledge.
+            Avec des opérations stratégiques à travers l'Afrique du Nord, SILAD fournit des produits lubrifiants premium aux clients automobiles et industriels de toute la région, combinant expertise technique et connaissance du marché local.
           </p>
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Tunisia</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Tunisie</h3>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-center">
                   <ChevronRight className="w-4 h-4 text-orange-600 mr-2" />
-                  Tunis (Headquarters)
+                  Tunis (Siège Social)
                 </li>
                 <li className="flex items-center">
                   <ChevronRight className="w-4 h-4 text-orange-600 mr-2" />
-                  Sfax (Manufacturing)
+                  Sfax (Fabrication)
                 </li>
                 <li className="flex items-center">
                   <ChevronRight className="w-4 h-4 text-orange-600 mr-2" />
@@ -326,51 +323,51 @@ export default function AboutUs() {
                 </li>
                 <li className="flex items-center">
                   <ChevronRight className="w-4 h-4 text-orange-600 mr-2" />
-                  Gabes (Storage Facility)
+                  Gabès (Installation de Stockage)
                 </li>
               </ul>
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">North Africa</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Afrique du Nord</h3>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-center">
                   <ChevronRight className="w-4 h-4 text-orange-600 mr-2" />
-                  Algiers, Algeria
+                  Alger, Algérie
                 </li>
                 <li className="flex items-center">
                   <ChevronRight className="w-4 h-4 text-orange-600 mr-2" />
-                  Casablanca, Morocco
+                  Casablanca, Maroc
                 </li>
                 <li className="flex items-center">
                   <ChevronRight className="w-4 h-4 text-orange-600 mr-2" />
-                  Tripoli, Libya
+                  Tripoli, Libye
                 </li>
                 <li className="flex items-center">
                   <ChevronRight className="w-4 h-4 text-orange-600 mr-2" />
-                  Cairo, Egypt
+                  Le Caire, Égypte
                 </li>
               </ul>
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Distribution Partners</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Partenaires de Distribution</h3>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-center">
                   <ChevronRight className="w-4 h-4 text-orange-600 mr-2" />
-                  Automotive Retailers
+                  Détaillants automobiles
                 </li>
                 <li className="flex items-center">
                   <ChevronRight className="w-4 h-4 text-orange-600 mr-2" />
-                  Industrial Suppliers
+                  Fournisseurs industriels
                 </li>
                 <li className="flex items-center">
                   <ChevronRight className="w-4 h-4 text-orange-600 mr-2" />
-                  Fleet Management Companies
+                  Entreprises de gestion de flotte
                 </li>
                 <li className="flex items-center">
                   <ChevronRight className="w-4 h-4 text-orange-600 mr-2" />
-                  Service Centers
+                  Centres de service
                 </li>
               </ul>
             </div>
@@ -379,17 +376,17 @@ export default function AboutUs() {
 
         {/* CTA Section */}
         <section id="contact" className="bg-gradient-to-br from-orange-700 to-orange-500 text-white rounded-2xl p-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Experience Premium Lubricant Solutions?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Prêt à Découvrir des Solutions de Lubrifiants Premium ?</h2>
           <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto">
-            Contact our team today to discuss how SILAD can provide the high-quality lubricants and technical expertise 
-            you need for your vehicles or industrial equipment.
+            Contactez notre équipe dès aujourd'hui pour discuter de la manière dont SILAD peut fournir les lubrifiants de haute qualité et l'expertise technique
+            dont vous avez besoin pour vos véhicules ou votre équipement industriel.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href="/contact" className="bg-white text-orange-600 hover:bg-orange-50 transition duration-300 py-3 px-8 rounded-full font-bold shadow-md text-lg">
-              Get in Touch
+              Contactez-nous
             </a>
             <a href="/products" className="bg-transparent hover:bg-orange-700 border-2 border-white transition duration-300 py-3 px-8 rounded-full font-bold text-lg">
-              Explore Our Products
+              Découvrez nos Produits
             </a>
           </div>
         </section>

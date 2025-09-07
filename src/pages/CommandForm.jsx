@@ -15,12 +15,12 @@ export default function CommandForm({ product, quantity, onClose }) {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!name.trim()) newErrors.name = "Name is requiorange";
-    else if (name.trim().length < 2) newErrors.name = "Name must be at least 2 characters";
+    if (!name.trim()) newErrors.name = "Le nom est obligatoire";
+    else if (name.trim().length < 2) newErrors.name = "Le nom doit contenir au moins 2 caractères";
 
-    if (!phone.trim()) newErrors.phone = "Phone number is requiorange";
+    if (!phone.trim()) newErrors.phone = "Le numéro de téléphone est obligatoire";
     else if (!/^[+]?[\d\s\-\(\)]{8,}$/.test(phone.trim()))
-      newErrors.phone = "Please enter a valid phone number";
+      newErrors.phone = "Veuillez entrer un numéro de téléphone valide";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -43,14 +43,14 @@ export default function CommandForm({ product, quantity, onClose }) {
         customerName: name.trim(),
         customerPhone: phone.trim(),
         createdAt: Timestamp.now(),
-        status: "pending"
+        status: "en attente"
       });
 
       setSuccess(true);
       setTimeout(() => onClose(), 2000);
     } catch (error) {
-      console.error("Error adding command: ", error);
-      setErrors({ submit: "Failed to place order. Please try again." });
+      console.error("Erreur lors de l’ajout de la commande : ", error);
+      setErrors({ submit: "Échec de la commande. Veuillez réessayer." });
     }
 
     setLoading(false);
@@ -62,36 +62,36 @@ export default function CommandForm({ product, quantity, onClose }) {
     return (
       <div className="p-8 text-center">
         <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-        <h2 className="text-xl font-bold mb-2">Order Placed Successfully!</h2>
+        <h2 className="text-xl font-bold mb-2">Commande passée avec succès !</h2>
         <p className="text-gray-600 mb-6">
-          Thank you for your order. We'll contact you shortly to confirm.
+          Merci pour votre commande. Nous vous contacterons prochainement pour confirmer.
         </p>
         <div className="bg-gray-50 border rounded-lg p-4 mb-4">
           <div className="flex justify-between text-sm">
-            <span>Product:</span>
+            <span>Produit :</span>
             <span className="font-medium">{product.name}</span>
           </div>
           <div className="flex justify-between text-sm">
-            <span>Quantity:</span>
+            <span>Quantité :</span>
             <span>{quantity}</span>
           </div>
           <div className="flex justify-between text-sm">
-            <span>Total:</span>
-            <span className="font-bold text-orange-600">${totalPrice}</span>
+            <span>Total :</span>
+            <span className="font-bold text-orange-600">{totalPrice} TND</span>
           </div>
         </div>
-        <p className="text-xs text-gray-400">Closing automatically...</p>
+        <p className="text-xs text-gray-400">Fermeture automatique...</p>
       </div>
     );
   }
 
   return (
     <div className="relative">
-      {/* Header */}
+      {/* En-tête */}
       <div className="flex items-center justify-between p-4 border-b">
         <h2 className="text-lg font-semibold flex items-center gap-2">
           <ShoppingCart className="w-5 h-5 text-orange-500" />
-          Place Order
+          Passer une commande
         </h2>
         <button
           onClick={onClose}
@@ -101,33 +101,33 @@ export default function CommandForm({ product, quantity, onClose }) {
         </button>
       </div>
 
-      {/* Product Info */}
+      {/* Infos produit */}
       <div className="p-4 border-b bg-gray-50">
         <div className="flex justify-between text-sm">
-          <span className="text-gray-600">Product:</span>
+          <span className="text-gray-600">Produit :</span>
           <span className="font-medium">{product.name}</span>
         </div>
         <div className="flex justify-between text-sm">
-          <span className="text-gray-600">Unit Price:</span>
-          <span className="text-orange-600 font-semibold">${product.price}</span>
+          <span className="text-gray-600">Prix unitaire :</span>
+          <span className="text-orange-600 font-semibold">{product.price} TND</span>
         </div>
         <div className="flex justify-between text-sm">
-          <span className="text-gray-600">Quantity:</span>
+          <span className="text-gray-600">Quantité :</span>
           <span>{quantity}</span>
         </div>
       </div>
 
-      {/* Form */}
+      {/* Formulaire */}
       <form onSubmit={handleSubmit} className="p-4 space-y-4">
-        {/* Name */}
+        {/* Nom */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             <User className="w-4 h-4 inline mr-1" />
-            Full Name *
+            Nom complet *
           </label>
           <input
             type="text"
-            placeholder="Enter your full name"
+            placeholder="Entrez votre nom complet"
             value={name}
             onChange={(e) => {
               setName(e.target.value);
@@ -145,15 +145,15 @@ export default function CommandForm({ product, quantity, onClose }) {
           )}
         </div>
 
-        {/* Phone */}
+        {/* Téléphone */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             <Phone className="w-4 h-4 inline mr-1" />
-            Phone Number *
+            Numéro de téléphone *
           </label>
           <input
             type="tel"
-            placeholder="Enter your phone number"
+            placeholder="Entrez votre numéro de téléphone"
             value={phone}
             onChange={(e) => {
               setPhone(e.target.value);
@@ -171,15 +171,15 @@ export default function CommandForm({ product, quantity, onClose }) {
           )}
         </div>
 
-        {/* Total Price */}
+        {/* Prix total */}
         <div className="bg-gray-50 border rounded-md p-3 flex justify-between">
           <span className="flex items-center gap-1 text-gray-700">
-            <DollarSign className="w-4 h-4 text-orange-500" /> Total:
+            <DollarSign className="w-4 h-4 text-orange-500" /> Total :
           </span>
-          <span className="text-lg font-bold text-orange-600">${totalPrice}</span>
+          <span className="text-lg font-bold text-orange-600">{totalPrice} TND</span>
         </div>
 
-        {/* Submit Error */}
+        {/* Erreur soumission */}
         {errors.submit && (
           <div className="bg-orange-50 border border-orange-200 rounded-md p-2 text-xs text-orange-500 flex items-center gap-1">
             <AlertCircle className="w-3 h-3" />
@@ -187,14 +187,14 @@ export default function CommandForm({ product, quantity, onClose }) {
           </div>
         )}
 
-        {/* Action Buttons */}
+        {/* Boutons actions */}
         <div className="flex gap-2 pt-2">
           <button
             type="button"
             onClick={onClose}
             className="flex-1 py-2 px-4 border rounded-md text-gray-700 hover:bg-gray-100 text-sm"
           >
-            Cancel
+            Annuler
           </button>
           <button
             type="submit"
@@ -208,19 +208,19 @@ export default function CommandForm({ product, quantity, onClose }) {
             {loading ? (
               <>
                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                Processing...
+                Traitement...
               </>
             ) : (
               <>
                 <ShoppingCart className="w-4 h-4" />
-                Confirm Order
+                Confirmer la commande
               </>
             )}
           </button>
         </div>
 
         <p className="text-center text-xs text-gray-500">
-          By placing this order, you agree to our terms. We’ll contact you soon.
+          En passant cette commande, vous acceptez nos conditions. Nous vous contacterons bientôt.
         </p>
       </form>
     </div>

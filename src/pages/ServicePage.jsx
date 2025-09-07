@@ -47,63 +47,63 @@ export default function ServicePage() {
   const mainServices = [
     {
       id: "shop",
-      title: "MECHANICAL PARTS STORE",
-      subtitle: "Premium Quality Components",
-      description: "Discover our extensive catalog of high-performance mechanical parts, precision-engineered components, and professional-grade accessories for automotive and industrial applications.",
+      title: "BOUTIQUE DE PIÈCES MÉCANIQUES",
+      subtitle: "Composants de Qualité Supérieure",
+      description: "Découvrez notre vaste catalogue de pièces mécaniques de haute performance, de composants de précision et d'accessoires de qualité professionnelle pour les applications automobiles et industrielles.",
       icon: <ShoppingCart className="w-12 h-12" />,
       features: [
-        "OEM & Aftermarket Parts",
-        "Industrial Components",
-        "Professional Tools",
-        "Quality Guaranteed"
+        "Pièces OEM & de rechange",
+        "Composants industriels",
+        "Outils professionnels",
+        "Qualité garantie"
       ],
       route: "/product",
-      buttonText: "Explore Catalog"
+      buttonText: "Explorer le Catalogue"
     },
     {
       id: "appointment",
-      title: "PROFESSIONAL SERVICES",
-      subtitle: "Expert Maintenance & Repair",
-      description: "Schedule comprehensive automotive services with our certified mechanics. From routine maintenance to complex repairs, we deliver precision workmanship with cutting-edge diagnostics.",
+      title: "SERVICES PROFESSIONNELS",
+      subtitle: "Entretien et Réparation par des Experts",
+      description: "Planifiez des services automobiles complets avec nos mécaniciens certifiés. De l'entretien de routine aux réparations complexes, nous offrons un travail de précision avec des diagnostics de pointe.",
       icon: <Calendar className="w-12 h-12" />,
       features: [
-        "Oil Changes & Tune-ups",
-        "Diagnostic Services",
-        "Engine Repairs",
-        "24/7 Emergency Support"
+        "Vidanges & mises au point",
+        "Services de diagnostic",
+        "Réparations de moteur",
+        "Assistance d'urgence 24/7"
       ],
       route: "/reservation",
-      buttonText: "Book Appointment"
+      buttonText: "Prendre Rendez-vous"
     }
   ];
 
   const additionalServices = [
     {
       icon: <Wrench className="w-8 h-8" />,
-      title: "Custom Fabrication",
-      description: "Bespoke mechanical solutions engineered to your exact specifications",
-      features: ["Custom parts", "Precision engineering", "Quality materials"],
+      title: "Fabrication sur Mesure",
+      description: "Solutions mécaniques sur mesure conçues selon vos spécifications exactes",
+      features: ["Pièces personnalisées", "Ingénierie de précision", "Matériaux de qualité"],
       route: "/custom-fabrication"
     },
     {
       icon: <Cog className="w-8 h-8" />,
-      title: "Performance Upgrades",
-      description: "Enhance your vehicle's performance with professional modifications",
-      features: ["Engine tuning", "Suspension upgrades", "Exhaust systems"],
+      title: "Améliorations de Performance",
+      description: "Améliorez les performances de votre véhicule grâce à des modifications professionnelles",
+      features: ["Tuning moteur", "Améliorations de suspension", "Systèmes d'échappement"],
       route: "/performance-upgrades"
     },
     {
       icon: <Shield className="w-8 h-8" />,
-      title: "Warranty Coverage",
-      description: "Comprehensive protection plans for all our services and parts",
-      features: ["Extended warranties", "Satisfaction guarantee", "Parts coverage"],
+      title: "Couverture de Garantie",
+      description: "Plans de protection complets pour tous nos services et pièces",
+      features: ["Garanties prolongées", "Satisfaction garantie", "Couverture des pièces"],
       route: "/warranty"
     },
     {
       icon: <Clock className="w-8 h-8" />,
-      title: "Express Service",
-      description: "Fast-track maintenance for urgent repairs and quick fixes",
-      features: ["Same-day service", "Priority scheduling", "Rapid diagnostics"],
+      title: "Service Express",
+      description: "Entretien rapide pour les réparations urgentes et les correctifs rapides",
+      features: ["Service le jour même", "Planification prioritaire", "Diagnostics rapides"],
       route: "/express-service"
     }
   ];
@@ -111,19 +111,19 @@ export default function ServicePage() {
   const contactInfo = [
     {
       icon: <Phone className="w-5 h-5" />,
-      title: "Call Us",
+      title: "Appelez-nous",
       info: "+1 (555) 123-4567",
       action: () => window.location.href = "tel:+15551234567"
     },
     {
       icon: <Mail className="w-5 h-5" />,
-      title: "Email Us",
+      title: "Envoyez-nous un Email",
       info: "service@Silad.com",
       action: () => window.location.href = "mailto:service@Silad.com"
     },
     {
       icon: <MapPin className="w-5 h-5" />,
-      title: "Visit Us",
+      title: "Rendez-nous Visite",
       info: "123 Precision Drive, Metropolis",
       action: () => window.open("https://maps.google.com/?q=123+Precision+Drive+Metropolis", "_blank")
     }
@@ -144,23 +144,22 @@ export default function ServicePage() {
 
         <div className="container mx-auto px-6 relative z-10 max-w-4xl">
           <h1 className="text-5xl font-semibold mb-6 leading-tight text-white">
-            Our <span className="text-orange-400">Professional</span> Services
+            Nos Services <span className="text-orange-400">Professionnels</span>
           </h1>
           <div className="w-16 h-0.5 bg-orange-500 mb-6"></div>
           <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-            Experience the pinnacle of mechanical excellence through our comprehensive suite of 
-            professional services and premium parts solutions.
+            Découvrez le summum de l'excellence mécanique grâce à notre gamme complète de services professionnels et de solutions de pièces de première qualité.
           </p>
           <div className="flex flex-wrap gap-4">
             <button 
               onClick={() => handleNavigation("/reservation")}
               className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300 shadow-lg hover:shadow-xl">
-              Schedule Service
+              Planifier un Service
             </button>
             <button 
               onClick={() => handleNavigation("/product")}
               className="border border-white hover:border-orange-400 hover:text-orange-400 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300">
-              Browse Parts
+              Parcourir les Pièces
             </button>
           </div>
         </div>
@@ -170,10 +169,10 @@ export default function ServicePage() {
       <section id="main-services" className="py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-semibold text-blue-900">Primary Services</h2>
+            <h2 className="text-4xl font-semibold text-blue-900">Services Principaux</h2>
             <div className="w-16 h-0.5 bg-orange-500 mx-auto my-4"></div>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Our core service offerings to meet your automotive needs
+              Nos services principaux pour répondre à vos besoins automobiles
             </p>
           </div>
 
@@ -227,10 +226,10 @@ export default function ServicePage() {
       <section id="additional" className="py-24 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-semibold text-blue-900">Specialized Services</h2>
+            <h2 className="text-4xl font-semibold text-blue-900">Services Spécialisés</h2>
             <div className="w-16 h-0.5 bg-orange-500 mx-auto my-4"></div>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Additional specialized solutions for your specific requirements
+              Solutions spécialisées supplémentaires pour vos besoins spécifiques
             </p>
           </div>
           
@@ -267,9 +266,9 @@ export default function ServicePage() {
       <section className="py-16 bg-white border-t border-blue-100">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold text-blue-900">Get In Touch</h2>
+            <h2 className="text-3xl font-semibold text-blue-900">Contactez-nous</h2>
             <div className="w-16 h-0.5 bg-orange-500 mx-auto my-4"></div>
-            <p className="text-gray-600">Reach out to us for service inquiries or consultations</p>
+            <p className="text-gray-600">Contactez-nous pour des demandes de service ou des consultations</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -297,7 +296,7 @@ export default function ServicePage() {
       {/* CTA */}
       <section className="py-16 bg-gradient-to-r from-blue-900 to-blue-800 text-white">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-semibold mb-6">Ready For Service?</h2>
+          <h2 className="text-3xl font-semibold mb-6">Prêt pour un Service ?</h2>
           <div className="w-16 h-0.5 bg-orange-500 mx-auto mb-6"></div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -305,14 +304,14 @@ export default function ServicePage() {
               onClick={() => handleNavigation("/product")}
               className="bg-transparent border-2 border-white hover:bg-white hover:text-blue-900 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300 flex items-center justify-center"
             >
-              Browse Parts
+              Parcourir les Pièces
               <ShoppingCart className="ml-2 w-5 h-5" />
             </button>
             <button 
               onClick={() => handleNavigation("/reservation")}
               className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300 flex items-center justify-center shadow-lg hover:shadow-xl"
             >
-              Book Service
+              Réserver un Service
               <Calendar className="ml-2 w-5 h-5" />
             </button>
           </div>

@@ -45,7 +45,7 @@ export default function ContactUs() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.message.trim()) {
-      setStatus("Please fill in your name and message.");
+      setStatus("Veuillez remplir votre nom et votre message.");
       return;
     }
     setLoading(true);
@@ -55,27 +55,27 @@ export default function ContactUs() {
       await addDoc(collection(db, "contactMessages"), {
         ...formData,
         createdAt: serverTimestamp(),
-        status: "new"
+        status: "nouveau"
       });
-      setStatus("Thank you! Your message has been sent.");
+      setStatus("Merci ! Votre message a bien été envoyé.");
       setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
     } catch (error) {
-      console.error("Error saving message:", error);
-      setStatus("Failed to send message. Please try again later.");
+      console.error("Erreur lors de l’enregistrement du message :", error);
+      setStatus("Échec de l’envoi du message. Veuillez réessayer plus tard.");
     }
     setLoading(false);
   };
 
   const contactInfo = [
-    { icon: <Phone className="w-8 h-8" />, title: "Call Us", info: "+1 (555) 123-4567", subtitle: "Mon-Fri 8AM-6PM" },
-    { icon: <Mail className="w-8 h-8" />, title: "Email Us", info: "info@mechpro.com", subtitle: "24/7 Response" },
-    { icon: <MapPin className="w-8 h-8" />, title: "Visit Us", info: "123 Industrial District", subtitle: "Downtown Location" }
+    { icon: <Phone className="w-8 h-8" />, title: "Appelez-nous", info: "+1 (555) 123-4567", subtitle: "Lun-Ven 8h-18h" },
+    { icon: <Mail className="w-8 h-8" />, title: "Écrivez-nous", info: "info@mechpro.com", subtitle: "Réponse sous 24h" },
+    { icon: <MapPin className="w-8 h-8" />, title: "Visitez-nous", info: "123 Zone Industrielle", subtitle: "Centre-ville" }
   ];
 
   const features = [
-    { icon: <Clock className="w-6 h-6" />, text: "24/7 Customer Support" },
-    { icon: <Shield className="w-6 h-6" />, text: "Secure Communication" },
-    { icon: <Zap className="w-6 h-6" />, text: "Quick Response Time" }
+    { icon: <Clock className="w-6 h-6" />, text: "Support client 24/7" },
+    { icon: <Shield className="w-6 h-6" />, text: "Communication sécurisée" },
+    { icon: <Zap className="w-6 h-6" />, text: "Temps de réponse rapide" }
   ];
 
   return (
@@ -83,7 +83,7 @@ export default function ContactUs() {
       <Navbar />
 
       <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        {/* Light Background */}
+        {/* Fond clair */}
         <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-100 to-white">
           <div className="absolute inset-0 opacity-10">
             {[...Array(20)].map((_, i) => (
@@ -111,16 +111,16 @@ export default function ContactUs() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left */}
+            {/* Gauche */}
             <div className={`transform transition-all duration-1000 ${isVisible.hero ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
               <h1 className="text-6xl md:text-7xl font-black mb-6 text-gray-900">
-                GET IN
+                PRENEZ
                 <br />
-                <span className="text-orange-600">TOUCH</span>
+                <span className="text-orange-600">CONTACT</span>
               </h1>
               <p className="text-xl text-gray-700 mb-8">
-                Ready to transform your mechanical challenges into breakthrough solutions? 
-                Our expert team is here to help you achieve engineering excellence.
+                Prêt à transformer vos défis mécaniques en solutions innovantes ? 
+                Notre équipe d’experts est là pour vous aider à atteindre l’excellence en ingénierie.
               </p>
 
               <div className="space-y-6 mb-8">
@@ -151,20 +151,20 @@ export default function ContactUs() {
               </div>
             </div>
 
-            {/* Right */}
+            {/* Droite */}
             <div className={`transform transition-all duration-1000 ${isVisible.hero ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
               <div className="bg-white border border-gray-200 rounded-3xl p-8 shadow-lg">
                 <div className="text-center mb-8">
                   <h2 className="text-3xl font-black mb-2">
-                    Send Us a <span className="text-orange-600">Message</span>
+                    Envoyez-nous un <span className="text-orange-600">Message</span>
                   </h2>
-                  <p className="text-gray-600">Fill out the form below and we'll get back to you within 24 hours</p>
+                  <p className="text-gray-600">Remplissez le formulaire ci-dessous et nous vous répondrons sous 24 heures</p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Name */}
+                  {/* Nom */}
                   <div>
-                    <label className="block text-gray-700 text-sm font-semibold mb-2">Name *</label>
+                    <label className="block text-gray-700 text-sm font-semibold mb-2">Nom *</label>
                     <div className="relative">
                       <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                       <input
@@ -172,9 +172,9 @@ export default function ContactUs() {
                         type="text"
                         value={formData.name}
                         onChange={handleChange}
-                        requiorange
+                        required
                         className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-orange-500"
-                        placeholder="Your full name"
+                        placeholder="Votre nom complet"
                       />
                     </div>
                   </div>
@@ -190,14 +190,14 @@ export default function ContactUs() {
                         value={formData.email}
                         onChange={handleChange}
                         className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-orange-500"
-                        placeholder="your.email@example.com"
+                        placeholder="votre.email@example.com"
                       />
                     </div>
                   </div>
 
-                  {/* Phone */}
+                  {/* Téléphone */}
                   <div>
-                    <label className="block text-gray-700 text-sm font-semibold mb-2">Phone</label>
+                    <label className="block text-gray-700 text-sm font-semibold mb-2">Téléphone</label>
                     <div className="relative">
                       <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                       <input
@@ -206,21 +206,21 @@ export default function ContactUs() {
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-orange-500"
-                        placeholder="+1 (555) 123-4567"
+                        placeholder="+216 12 345 678"
                       />
                     </div>
                   </div>
 
-                  {/* Subject */}
+                  {/* Sujet */}
                   <div>
-                    <label className="block text-gray-700 text-sm font-semibold mb-2">Subject</label>
+                    <label className="block text-gray-700 text-sm font-semibold mb-2">Sujet</label>
                     <input
                       name="subject"
                       type="text"
                       value={formData.subject}
                       onChange={handleChange}
                       className="w-full px-4 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-orange-500"
-                      placeholder="Brief summary of your inquiry"
+                      placeholder="Résumé de votre demande"
                     />
                   </div>
 
@@ -233,27 +233,27 @@ export default function ContactUs() {
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        requiorange
+                        required
                         rows="5"
                         className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:border-orange-500 resize-none"
-                        placeholder="Tell us about your project or inquiry..."
+                        placeholder="Décrivez votre projet ou demande..."
                       />
                     </div>
                   </div>
 
-                  {/* Status */}
+                  {/* Statut */}
                   {status && (
                     <div className={`flex items-center space-x-2 p-4 rounded-xl ${
-                      status.includes("Thank") 
+                      status.includes("Merci") 
                         ? "bg-green-50 border border-green-200 text-green-700" 
                         : "bg-orange-50 border border-orange-200 text-orange-700"
                     }`}>
-                      {status.includes("Thank") ? <CheckCircle className="w-5 h-5" /> : <AlertCircle className="w-5 h-5" />}
+                      {status.includes("Merci") ? <CheckCircle className="w-5 h-5" /> : <AlertCircle className="w-5 h-5" />}
                       <p className="text-sm font-medium">{status}</p>
                     </div>
                   )}
 
-                  {/* Submit */}
+                  {/* Bouton */}
                   <button
                     type="submit"
                     disabled={loading}
@@ -267,11 +267,11 @@ export default function ContactUs() {
                       {loading ? (
                         <>
                           <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                          Sending...
+                          Envoi en cours...
                         </>
                       ) : (
                         <>
-                          Send Message
+                          Envoyer
                           <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </>
                       )}
@@ -283,7 +283,7 @@ export default function ContactUs() {
           </div>
         </div>
 
-        {/* Floating Shapes */}
+        {/* Formes flottantes */}
         <div className="absolute top-20 right-10 w-20 h-20 border-2 border-orange-300 rotate-45 animate-spin" style={{animationDuration: '20s'}} />
         <div className="absolute bottom-20 left-10 w-16 h-16 bg-gradient-to-br from-orange-200 to-transparent rounded-full animate-bounce" />
       </section>

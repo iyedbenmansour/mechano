@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Search, Filter, Grid, List, Package, Eye, Wrench, Sprout, ChevronDown, Star, StarHalf } from "lucide-react";
+import { Search, Filter, Grid, List, Package, Eye, Wrench, Sprout, ChevronDown, Star, StarHalf, ArrowLeft, XCircle } from "lucide-react";
 
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
@@ -34,7 +34,7 @@ function ProductList() {
         const querySnapshot = await getDocs(collection(db, "products"));
         setProducts(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error("Erreur lors de la récupération des produits :", error);
       } finally {
         setIsLoading(false);
       }
@@ -47,7 +47,7 @@ function ProductList() {
       await deleteDoc(doc(db, "products", id));
       setProducts(products.filter(p => p.id !== id));
     } catch (error) {
-      console.error("Error deleting product:", error);
+      console.error("Erreur lors de la suppression du produit :", error);
     }
   };
 
@@ -115,13 +115,13 @@ function ProductList() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="py-3">
             <nav className="text-sm text-gray-600 mb-4">
-            <Link to="/">  <span className="hover:text-blue-600 cursor-pointer">Home</span></Link>
+            <Link to="/">  <span className="hover:text-blue-600 cursor-pointer">Accueil</span></Link>
               <span className="mx-2 text-orange-400">›</span>
-              <span className="text-blue-900 font-medium">All Products</span>
+              <span className="text-blue-900 font-medium">Tous les produits</span>
             </nav>
             
             <h1 className="text-2xl font-normal text-blue-900 mb-4">
-              Results for <span className="font-medium text-orange-600">"All Products"</span>
+              Résultats pour <span className="font-medium text-orange-600">"Tous les produits"</span>
             </h1>
             
             {/* Search and filter bar */}
@@ -131,7 +131,7 @@ function ProductList() {
                 <div className="relative flex-1 max-w-md">
                   <input
                     type="text"
-                    placeholder="Search products..."
+                    placeholder="Rechercher des produits..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-sm transition-all"
@@ -146,7 +146,7 @@ function ProductList() {
                     onChange={(e) => setSelectedCategory(e.target.value)}
                     className="appearance-none px-3 py-2 pr-8 border border-gray-300 rounded-md focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-sm bg-white min-w-[150px] transition-all"
                   >
-                    <option value="">All Categories</option>
+                    <option value="">Toutes les catégories</option>
                     {categories.map(category => (
                       <option key={category} value={category}>{category}</option>
                     ))}
@@ -184,18 +184,18 @@ function ProductList() {
           <div className="hidden lg:block w-64 flex-shrink-0">
             <div className="bg-white rounded-lg border border-blue-200 p-4 sticky top-24 shadow-sm">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-blue-900">Refine by</h3>
+                <h3 className="font-semibold text-blue-900">Affiner par</h3>
                 <button
                   onClick={clearAllFilters}
                   className="text-sm text-orange-500 hover:text-orange-600 transition-colors"
                 >
-                  Clear all
+                  Tout effacer
                 </button>
               </div>
               
               {/* Category Filter */}
               <div className="mb-6">
-                <h4 className="font-medium text-blue-900 mb-3">Category</h4>
+                <h4 className="font-medium text-blue-900 mb-3">Catégorie</h4>
                 <div className="space-y-2 max-h-40 overflow-y-auto">
                   {categories.map(category => (
                     <label key={category} className="flex items-center cursor-pointer">
@@ -216,7 +216,7 @@ function ProductList() {
 
               {/* Price Range Filter */}
               <div className="mb-6">
-                <h4 className="font-medium text-blue-900 mb-3">Price Range</h4>
+                <h4 className="font-medium text-blue-900 mb-3">Fourchette de prix</h4>
                 <div className="space-y-3">
                   <div className="flex gap-2 items-center">
                     <input
@@ -236,7 +236,7 @@ function ProductList() {
                     />
                   </div>
                   <div className="text-xs text-gray-500">
-                    Price range: <span className="text-blue-600">${Math.min(...products.map(getProductPrice))}</span> - <span className="text-orange-500">${Math.max(...products.map(getProductPrice))}</span>
+                    Fourchette de prix : <span className="text-blue-600">{Math.min(...products.map(getProductPrice))} TND</span> - <span className="text-orange-500">{Math.max(...products.map(getProductPrice))} TND</span>
                   </div>
                 </div>
               </div>
@@ -246,13 +246,13 @@ function ProductList() {
                 onClick={applyFilters}
                 className="w-full bg-orange-500 hover:from-blue-700 hover:to-orange-600 text-white font-medium py-2 px-4 rounded-md text-sm transition-all duration-200 shadow-lg hover:shadow-xl"
               >
-                Apply Filters
+                Appliquer les filtres
               </button>
               
               {/* Active Filters Display */}
               {(appliedFilters.categories.length > 0 || appliedFilters.priceRange.min || appliedFilters.priceRange.max) && (
                 <div className="mt-4 pt-4 border-t border-blue-100">
-                  <h5 className="text-sm font-medium text-blue-900 mb-2">Active Filters:</h5>
+                  <h5 className="text-sm font-medium text-blue-900 mb-2">Filtres actifs :</h5>
                   <div className="space-y-1">
                     {appliedFilters.categories.map(category => (
                       <span key={category} className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mr-1 mb-1">
@@ -261,7 +261,7 @@ function ProductList() {
                     ))}
                     {(appliedFilters.priceRange.min || appliedFilters.priceRange.max) && (
                       <span className="inline-block bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded mr-1 mb-1">
-                        ${appliedFilters.priceRange.min || '0'} - ${appliedFilters.priceRange.max || '∞'}
+                        {appliedFilters.priceRange.min || '0'} TND - {appliedFilters.priceRange.max || '∞'} TND
                       </span>
                     )}
                   </div>
@@ -276,19 +276,19 @@ function ProductList() {
               <div className="flex items-center justify-center py-20">
                 <div className="text-center">
                   <div className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-600 rounded-full animate-spin mx-auto mb-4"></div>
-                  <p className="text-gray-500">Loading products...</p>
+                  <p className="text-gray-500">Chargement des produits...</p>
                 </div>
               </div>
             ) : filteredProducts.length === 0 ? (
               <div className="text-center py-20 bg-white rounded-lg border border-blue-200 shadow-sm">
                 <Package className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                 <h2 className="text-xl font-medium text-blue-900 mb-2">
-                  {products.length === 0 ? "No products to display" : "No results found"}
+                  {products.length === 0 ? "Aucun produit à afficher" : "Aucun résultat trouvé"}
                 </h2>
                 <p className="text-gray-500 mb-6">
                   {products.length === 0
-                    ? "Check back later for new products."
-                    : "Try different keywords or remove search filters."}
+                    ? "Revenez plus tard pour de nouveaux produits."
+                    : "Essayez d'autres mots-clés ou supprimez les filtres de recherche."}
                 </p>
                 {(searchTerm || selectedCategory) && (
                   <button
@@ -299,7 +299,7 @@ function ProductList() {
                     }}
                     className="bg-orange-500 hover:from-blue-700 hover:to-orange-600 text-white font-medium px-6 py-2 rounded-md text-sm shadow-lg hover:shadow-xl transition-all"
                   >
-                    Clear filters
+                    Effacer les filtres
                   </button>
                 )}
               </div>
@@ -341,7 +341,7 @@ function ProductList() {
                         
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-lg font-semibold text-blue-900">
-                            ${productPrice.toFixed(2)}
+                            {productPrice.toFixed(2)} TND
                           </span>
                         </div>
                         
@@ -362,7 +362,7 @@ function ProductList() {
                             to={`/product/${product.id}`}
                             className="inline-block bg-orange-500 hover:from-blue-700 hover:to-orange-600 text-white text-sm font-medium px-4 py-2 rounded-md transition-all duration-200 w-full text-center shadow-md hover:shadow-lg"
                           >
-                            View Details
+                            Voir les détails
                           </Link>
                         </div>
                       </div>
@@ -396,16 +396,16 @@ function ProductList() {
                               {product.name}
                             </h3>
                           </Link>
-                       
+                        
                           <div className="flex items-center mb-2">
                             <span className="text-xl font-semibold text-blue-900">
-                              ${productPrice.toFixed(2)}
+                              {productPrice.toFixed(2)} TND
                             </span>
                           </div>
                           
                           {product.category && (
                             <div className="text-sm text-gray-600 mb-2">
-                              Category: <span className="text-orange-600 font-medium">{product.category}</span>
+                              Catégorie : <span className="text-orange-600 font-medium">{product.category}</span>
                             </div>
                           )}
                           
@@ -419,7 +419,7 @@ function ProductList() {
                             to={`/product/${product.id}`}
                             className="inline-block bg-orange-500 hover:from-blue-700 hover:to-orange-600 text-white text-sm font-medium px-6 py-2 rounded-md transition-all duration-200 shadow-md hover:shadow-lg"
                           >
-                            View Details
+                            Voir les détails
                           </Link>
                         </div>
                       </div>

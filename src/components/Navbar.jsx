@@ -7,7 +7,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
 
-  // Close dropdown if clicked outside
   const dropdownRef = useRef(null);
   useEffect(() => {
     function handleClickOutside(event) {
@@ -24,7 +23,7 @@ export default function Navbar() {
 
   const toggleMobileMenu = () => {
     setIsOpen(!isOpen);
-    setServicesOpen(false); // Close services dropdown when toggling mobile menu
+    setServicesOpen(false);
   };
 
   const handleLinkClick = () => {
@@ -43,24 +42,24 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop menu */}
+          {/* Menu Desktop */}
           <div className="hidden md:flex space-x-8 items-center">
             <Link
               to="/"
               className="relative text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium group py-2"
             >
-              Home
+              Accueil
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-orange-500 group-hover:w-full transition-all duration-300"></span>
             </Link>
             <Link
               to="/about"
               className="relative text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium group py-2"
             >
-              About Us
+              À propos
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-orange-500 group-hover:w-full transition-all duration-300"></span>
             </Link>
 
-            {/* Services Dropdown (Redesigned for Hover) */}
+            {/* Services Dropdown */}
             <div className="relative group" ref={dropdownRef}>
               <Link
                 to="/services"
@@ -77,7 +76,7 @@ export default function Navbar() {
                   className="flex items-center px-6 py-4 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-orange-50 hover:text-blue-600 transition-all duration-300 font-medium"
                 >
                   <Wrench size={20} className="mr-3 text-orange-500" />
-                  Shop
+                  Boutique
                 </Link>
                 <Link
                   to="/reservation"
@@ -85,7 +84,7 @@ export default function Navbar() {
                   className="flex items-center px-6 py-4 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-orange-50 hover:text-blue-600 transition-all duration-300 font-medium border-t border-blue-100"
                 >
                   <Calendar size={20} className="mr-3 text-orange-500" />
-                  Make Rendez-vous
+                  Prendre rendez-vous
                 </Link>
               </div>
             </div>
@@ -99,7 +98,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Bouton menu mobile */}
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
@@ -117,7 +116,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu content */}
+      {/* Menu mobile */}
       <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-96" : "max-h-0"}`}>
         <div className="bg-gradient-to-br from-blue-50 to-orange-50 shadow-inner border-t border-blue-200">
           <div className="px-4 pt-4 pb-6 space-y-2">
@@ -126,17 +125,17 @@ export default function Navbar() {
               className="block px-4 py-3 rounded-md text-gray-700 hover:bg-white hover:text-blue-600 transition-all duration-300 font-medium shadow-sm"
               onClick={handleLinkClick}
             >
-              Home
+              Accueil
             </Link>
             <Link
               to="/about"
               className="block px-4 py-3 rounded-md text-gray-700 hover:bg-white hover:text-blue-600 transition-all duration-300 font-medium shadow-sm"
               onClick={handleLinkClick}
             >
-              About Us
+              À propos
             </Link>
 
-            {/* Mobile Services with sub-links */}
+            {/* Services mobile */}
             <div className="space-y-1">
               <Link
                 to="/services"
@@ -153,7 +152,7 @@ export default function Navbar() {
                   onClick={handleLinkClick}
                 >
                   <Wrench size={16} className="mr-2 text-orange-500" />
-                  Shop 
+                  Boutique
                 </Link>
                 <Link
                   to="/reservation"
@@ -161,7 +160,7 @@ export default function Navbar() {
                   onClick={handleLinkClick}
                 >
                   <Calendar size={16} className="mr-2 text-orange-500" />
-                  Make Rendez-vous
+                  Prendre rendez-vous
                 </Link>
               </div>
             </div>

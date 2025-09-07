@@ -1,72 +1,72 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; 
-import { 
+import { useNavigate } from 'react-router-dom';
+import {
   ChevronRight, Wrench, Cog, Shield, Star, Phone, Mail, MapPin,
   Send, User, MessageSquare, Clock, Zap, CheckCircle, AlertCircle
 } from 'lucide-react';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { db } from "../firebase"; // Make sure you have firebase config set up
+import { db } from "../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 
 const services = [
   {
     icon: <Wrench size={24} />,
-    title: "Oil Change & Maintenance",
-    description: "Regular oil changes and preventative maintenance to keep your vehicle running smoothly and extend its lifespan.",
-    features: ["Engine check", "Fluid top-ups", "Tire rotation"]
+    title: "Vidange & Entretien",
+    description: "Vidanges régulières et entretien préventif pour assurer le bon fonctionnement de votre véhicule et prolonger sa durée de vie.",
+    features: ["Vérification du moteur", "Niveaux des fluides", "Permutation des pneus"]
   },
   {
     icon: <Cog size={24} />,
-    title: "Engine Diagnostics",
-    description: "Advanced engine diagnostics to accurately identify and fix issues, ensuring optimal performance and safety.",
-    features: ["Check engine light", "Performance testing", "Sensor analysis"]
+    title: "Diagnostic Moteur",
+    description: "Diagnostics moteur avancés pour identifier et résoudre avec précision les problèmes, garantissant des performances et une sécurité optimales.",
+    features: ["Voyant moteur", "Tests de performance", "Analyse des capteurs"]
   },
   {
     icon: <Shield size={24} />,
-    title: "Brake Inspection",
-    description: "Thorough brake inspections and repairs to ensure your safety on the road with reliable stopping power.",
-    features: ["Pad replacement", "Rotor resurfacing", "Brake fluid flush"]
+    title: "Inspection des Freins",
+    description: "Inspections et réparations complètes des freins pour assurer votre sécurité sur la route avec une puissance de freinage fiable.",
+    features: ["Remplacement des plaquettes", "Surfaçage des disques", "Purge du liquide de frein"]
   },
   {
     icon: <Star size={24} />,
-    title: "Battery & Electrical",
-    description: "Expert battery testing and electrical system repairs to resolve power issues and ensure reliable starting.",
-    features: ["Battery replacement", "Alternator repair", "Wiring diagnostics"]
+    title: "Batterie & Électrique",
+    description: "Tests de batterie experts et réparations du système électrique pour résoudre les problèmes d'alimentation et assurer un démarrage fiable.",
+    features: ["Remplacement de batterie", "Réparation d'alternateur", "Diagnostic du câblage"]
   },
   {
     icon: <Wrench size={24} />,
-    title: "Transmission Service",
-    description: "Comprehensive transmission fluid flush and repairs to maintain smooth gear shifting and prevent costly damage.",
-    features: ["Fluid change", "Filter replacement", "Leak repair"]
+    title: "Service de Transmission",
+    description: "Vidange complète du liquide de transmission et réparations pour maintenir des changements de vitesse fluides et prévenir les dommages coûteux.",
+    features: ["Changement de fluide", "Remplacement du filtre", "Réparation de fuite"]
   },
   {
     icon: <Cog size={24} />,
-    title: "AC & Heating",
-    description: "Full-service AC and heating system repairs to keep you comfortable in your car year-round.",
-    features: ["Recharge service", "System diagnostics", "Heater core repair"]
+    title: "Climatisation & Chauffage",
+    description: "Services complets de réparation des systèmes de climatisation et de chauffage pour vous garder à l'aise dans votre voiture toute l'année.",
+    features: ["Service de recharge", "Diagnostic du système", "Réparation du noyau de chauffage"]
   }
 ];
 
 const testimonials = [
   {
     name: "Alex Johnson",
-    role: "Business Owner",
+    role: "Propriétaire d'entreprise",
     rating: 5,
-    comment: "The team at Silad was incredibly professional and knowledgeable. They fixed my engine issue quickly and the price was very reasonable. Highly recommended!"
+    comment: "L'équipe de Silad a été incroyablement professionnelle et compétente. Ils ont résolu mon problème de moteur rapidement et le prix était très raisonnable. Hautement recommandé !"
   },
   {
     name: "Maria Smith",
-    role: "Fleet Manager",
+    role: "Gestionnaire de flotte",
     rating: 5,
-    comment: "I always take my company vehicles here for service. They're honest, efficient, and always go the extra mile. Great customer service!"
+    comment: "Je confie toujours les véhicules de mon entreprise ici pour l'entretien. Ils sont honnêtes, efficaces et font toujours un effort supplémentaire. Excellent service client !"
   },
   {
     name: "David Chen",
-    role: "Luxury Car Owner",
+    role: "Propriétaire de voiture de luxe",
     rating: 5,
-    comment: "Fast and reliable service. I had a complex electrical issue and they were able to diagnose and fix it when other shops couldn't. Thanks, Silad!"
+    comment: "Service rapide et fiable. J'avais un problème électrique complexe qu'ils ont pu diagnostiquer et résoudre alors que d'autres garages n'y arrivaient pas. Merci, Silad !"
   }
 ];
 
@@ -124,7 +124,7 @@ export default function Home() {
 
     // Basic validation
     if (!formData.name.trim() || !formData.message.trim()) {
-      setStatus("Please fill in your name and message.");
+      setStatus("Veuillez remplir votre nom et votre message.");
       return;
     }
 
@@ -139,7 +139,7 @@ export default function Home() {
         status: "new"
       });
       
-      setStatus("Thank you! Your service request has been submitted.");
+      setStatus("Merci ! Votre demande de service a été soumise.");
       setFormData({
         name: "",
         email: "",
@@ -148,8 +148,8 @@ export default function Home() {
         message: "",
       });
     } catch (error) {
-      console.error("Error saving request:", error);
-      setStatus("Failed to submit request. Please try again later.");
+      console.error("Erreur lors de la sauvegarde de la demande :", error);
+      setStatus("Échec de la soumission de la demande. Veuillez réessayer plus tard.");
     }
 
     setLoading(false);
@@ -158,36 +158,36 @@ export default function Home() {
   const contactInfo = [
     {
       icon: <Phone className="w-5 h-5" />,
-      title: "Call Us",
+      title: "Appelez-nous",
       info: "+1 (555) 123-4567",
-      subtitle: "Mon-Fri 8AM-6PM"
+      subtitle: "Lun-Ven 8h-18h"
     },
     {
       icon: <Mail className="w-5 h-5" />,
-      title: "Email Us",
+      title: "Envoyez-nous un e-mail",
       info: "service@Silad.com",
-      subtitle: "24/7 Response"
+      subtitle: "Réponse 24/7"
     },
     {
       icon: <MapPin className="w-5 h-5" />,
-      title: "Visit Us",
+      title: "Visitez-nous",
       info: "123 Precision Drive, Metropolis",
-      subtitle: "Downtown Location"
+      subtitle: "Emplacement en centre-ville"
     }
   ];
 
   const features = [
     {
       icon: <Clock className="w-5 h-5" />,
-      text: "24/7 Customer Support"
+      text: "Support client 24/7"
     },
     {
       icon: <Shield className="w-5 h-5" />,
-      text: "Secure Communication"
+      text: "Communication sécurisée"
     },
     {
       icon: <Zap className="w-5 h-5" />,
-      text: "Quick Response Time"
+      text: "Temps de réponse rapide"
     }
   ];
 
@@ -200,7 +200,7 @@ export default function Home() {
     <div className="bg-gray-50 text-gray-900 font-serif">
       <Navbar />
 
-     {/* Hero Section */}
+      {/* Hero Section */}
 <section
   id="hero"
   className="relative h-screen flex items-center bg-cover bg-center"
@@ -209,21 +209,21 @@ export default function Home() {
   <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-800 to-transparent opacity-80"></div>
   <div className="container mx-auto px-6 relative z-10 max-w-4xl">
     <h1 className="text-5xl font-semibold mb-6 leading-tight text-white">
-      Precision <span className="text-orange-400">Automotive</span> Engineering
+      Ingénierie <span className="text-orange-400">Automobile</span> de Précision
     </h1>
     <div className="w-16 h-0.5 bg-orange-500 mb-6"></div>
     <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-      Expert diagnostics, meticulous service, and guaranteed satisfaction. Your trusted partner for sophisticated automotive solutions.
+      Diagnostic expert, service méticuleux et satisfaction garantie. Votre partenaire de confiance pour des solutions automobiles sophistiquées.
     </p>
     <div className="flex space-x-4">
       <button onClick={() => handleNavigation("/reservation")}
- className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300 shadow-lg hover:shadow-xl">
-        Schedule Service
+className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300 shadow-lg hover:shadow-xl">
+        Prendre un rendez-vous
       </button>
       <button 
-              onClick={() => handleNavigation("/services")}
+          onClick={() => handleNavigation("/services")}
 className="border border-white hover:border-orange-400 hover:text-orange-400 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300">
-        Our Services
+        Nos Services
       </button>
     </div>
   </div>
@@ -233,10 +233,10 @@ className="border border-white hover:border-orange-400 hover:text-orange-400 tex
       <section id="services" className="py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-semibold text-blue-900">Our Services</h2>
+            <h2 className="text-4xl font-semibold text-blue-900">Nos Services</h2>
             <div className="w-16 h-0.5 bg-orange-500 mx-auto my-4"></div>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Comprehensive automotive solutions utilizing advanced diagnostics and precision engineering.
+              Solutions automobiles complètes utilisant des diagnostics avancés et une ingénierie de précision.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -266,34 +266,34 @@ className="border border-white hover:border-orange-400 hover:text-orange-400 tex
             <div className="relative rounded-lg overflow-hidden shadow-lg">
               <img 
                 src="https://t3.ftcdn.net/jpg/00/34/18/76/360_F_34187663_IB1vXgpqtRnnXkWfwmRsjNeLc2Ou2UTA.jpg" 
-                alt="Auto repair shop" 
+                alt="Atelier de réparation automobile" 
                 className="w-full h-full object-cover"
               />
               <div className="absolute bottom-0 left-0 p-6 bg-gradient-to-t from-blue-900 to-transparent text-white">
-                <div className="text-3xl font-semibold">15<span className="text-orange-400">+</span> Years of Excellence</div>
+                <div className="text-3xl font-semibold">15<span className="text-orange-400">+</span> Ans d'Excellence</div>
               </div>
             </div>
             <div>
-              <h2 className="text-4xl font-semibold mb-6 text-blue-900">About Silad</h2>
+              <h2 className="text-4xl font-semibold mb-6 text-blue-900">À Propos de Silad</h2>
               <div className="w-16 h-0.5 bg-orange-500 mb-6"></div>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                With over 15 years of experience in automotive engineering, Silad has established itself as an industry leader in precision diagnostics and quality repairs. Our team of certified master technicians employs advanced methodology and state-of-the-art equipment to deliver superior results.
+                Avec plus de 15 ans d'expérience en ingénierie automobile, Silad s'est imposé comme un leader de l'industrie en matière de diagnostics de précision et de réparations de qualité. Notre équipe de techniciens certifiés utilise une méthodologie avancée et des équipements de pointe pour offrir des résultats supérieurs.
               </p>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                We specialize in both domestic and foreign vehicles, with particular expertise in high-performance and luxury automobiles. Our commitment to excellence has earned us recognition as the preferred service provider for discerning clients.
+                Nous sommes spécialisés dans les véhicules nationaux et étrangers, avec une expertise particulière dans les automobiles de haute performance et de luxe. Notre engagement envers l'excellence nous a valu la reconnaissance en tant que fournisseur de services privilégié pour une clientèle exigeante.
               </p>
               <div className="grid grid-cols-3 gap-6">
                 <div className="text-center">
                   <div className="text-3xl font-semibold text-blue-900">3000<span className="text-orange-500">+</span></div>
-                  <div className="text-gray-500">Satisfied Clients</div>
+                  <div className="text-gray-500">Clients Satisfaits</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-semibold text-blue-900">98<span className="text-orange-500">%</span></div>
-                  <div className="text-gray-500">Client Retention</div>
+                  <div className="text-gray-500">Fidélisation de la Clientèle</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-semibold text-blue-900">24<span className="text-orange-500">/7</span></div>
-                  <div className="text-gray-500">Premium Support</div>
+                  <div className="text-gray-500">Support Premium</div>
                 </div>
               </div>
             </div>
@@ -305,10 +305,10 @@ className="border border-white hover:border-orange-400 hover:text-orange-400 tex
       <section id="testimonials" className="py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-semibold text-blue-900">Client Testimonials</h2>
+            <h2 className="text-4xl font-semibold text-blue-900">Témoignages de Clients</h2>
             <div className="w-16 h-0.5 bg-orange-500 mx-auto my-4"></div>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              The feedback from our valued clients reflects our commitment to excellence in automotive care.
+              Les commentaires de nos précieux clients reflètent notre engagement envers l'excellence dans l'entretien automobile.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -336,10 +336,10 @@ className="border border-white hover:border-orange-400 hover:text-orange-400 tex
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-4xl font-semibold mb-6 text-blue-900">Get in Touch</h2>
+              <h2 className="text-4xl font-semibold mb-6 text-blue-900">Contactez-nous</h2>
               <div className="w-16 h-0.5 bg-orange-500 mb-6"></div>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                Ready to schedule your next service or have questions about your vehicle? Our expert team is here to help you with all your automotive needs.
+                Prêt à planifier votre prochain service ou avez des questions sur votre véhicule ? Notre équipe d'experts est là pour vous aider avec tous vos besoins automobiles.
               </p>
               <div className="space-y-6 mb-8">
                 {contactInfo.map((item, index) => (
@@ -364,11 +364,11 @@ className="border border-white hover:border-orange-400 hover:text-orange-400 tex
             </div>
             <div>
               <div className="bg-white p-8 rounded-lg shadow-lg border border-blue-100">
-                <h3 className="text-2xl font-semibold mb-4 text-blue-900">Service Request</h3>
-                <p className="text-gray-600 mb-6">Fill out the form below and we'll get back to you within 24 hours.</p>
+                <h3 className="text-2xl font-semibold mb-4 text-blue-900">Demande de Service</h3>
+                <p className="text-gray-600 mb-6">Remplissez le formulaire ci-dessous et nous vous répondrons dans les 24 heures.</p>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label className="block text-gray-700 text-sm font-medium mb-1">Name *</label>
+                    <label className="block text-gray-700 text-sm font-medium mb-1">Nom *</label>
                     <div className="relative">
                       <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                       <input
@@ -378,12 +378,12 @@ className="border border-white hover:border-orange-400 hover:text-orange-400 tex
                         onChange={handleChange}
                         required
                         className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                        placeholder="Your full name"
+                        placeholder="Votre nom complet"
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-gray-700 text-sm font-medium mb-1">Email</label>
+                    <label className="block text-gray-700 text-sm font-medium mb-1">E-mail</label>
                     <div className="relative">
                       <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                       <input
@@ -392,12 +392,12 @@ className="border border-white hover:border-orange-400 hover:text-orange-400 tex
                         value={formData.email}
                         onChange={handleChange}
                         className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                        placeholder="your.email@example.com"
+                        placeholder="votre.email@exemple.com"
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-gray-700 text-sm font-medium mb-1">Phone *</label>
+                    <label className="block text-gray-700 text-sm font-medium mb-1">Téléphone *</label>
                     <div className="relative">
                       <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                       <input
@@ -412,7 +412,7 @@ className="border border-white hover:border-orange-400 hover:text-orange-400 tex
                     </div>
                   </div>
                   <div>
-                    <label className="block text-gray-700 text-sm font-medium mb-1">Vehicle Information *</label>
+                    <label className="block text-gray-700 text-sm font-medium mb-1">Informations sur le véhicule *</label>
                     <input
                       name="vehicle"
                       type="text"
@@ -420,11 +420,11 @@ className="border border-white hover:border-orange-400 hover:text-orange-400 tex
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                      placeholder="Year, Make, Model"
+                      placeholder="Année, Marque, Modèle"
                     />
                   </div>
                   <div>
-                    <label className="block text-gray-700 text-sm font-medium mb-1">Service Details *</label>
+                    <label className="block text-gray-700 text-sm font-medium mb-1">Détails du service *</label>
                     <div className="relative">
                       <MessageSquare className="absolute left-3 top-4 text-gray-400 w-5 h-5" />
                       <textarea
@@ -434,17 +434,17 @@ className="border border-white hover:border-orange-400 hover:text-orange-400 tex
                         required
                         rows="4"
                         className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
-                        placeholder="Tell us about the service you need..."
+                        placeholder="Décrivez le service dont vous avez besoin..."
                       />
                     </div>
                   </div>
                   {status && (
                     <div className={`flex items-center p-3 rounded-md ${
-                      status.includes("Thank") 
+                      status.includes("Merci") 
                         ? "bg-green-100 text-green-700 border border-green-200" 
                         : "bg-red-100 text-red-700 border border-red-200"
                     }`}>
-                      {status.includes("Thank") ? (
+                      {status.includes("Merci") ? (
                         <CheckCircle className="w-5 h-5 mr-2" />
                       ) : (
                         <AlertCircle className="w-5 h-5 mr-2" />
@@ -461,7 +461,7 @@ className="border border-white hover:border-orange-400 hover:text-orange-400 tex
                         : "bg-gradient-to-r from-blue-600 to-orange-500 hover:from-blue-700 hover:to-orange-600 shadow-lg hover:shadow-xl"
                     }`}
                   >
-                    {loading ? "Sending..." : "Send Request"}
+                    {loading ? "Envoi en cours..." : "Envoyer la demande"}
                   </button>
                 </form>
               </div>

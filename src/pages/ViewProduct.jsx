@@ -49,11 +49,11 @@ export default function ViewProduct() {
         if (docSnap.exists()) {
           setProduct({ id: docSnap.id, ...docSnap.data() });
         } else {
-          setError("Product not found");
+          setError("Produit non trouvé");
         }
       } catch (err) {
-        setError("Failed to load product");
-        console.error("Error fetching product:", err);
+        setError("Échec du chargement du produit");
+        console.error("Erreur lors de la récupération du produit :", err);
       } finally {
         setIsLoading(false);
       }
@@ -76,7 +76,7 @@ export default function ViewProduct() {
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
             <div className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-600 rounded-full animate-spin mx-auto mb-4"></div>
-            <p className="text-gray-500 text-lg">Loading product details...</p>
+            <p className="text-gray-500 text-lg">Chargement des détails du produit...</p>
           </div>
         </div>
         <Footer />
@@ -91,14 +91,14 @@ export default function ViewProduct() {
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center max-w-md">
             <XCircle className="w-24 h-24 text-orange-500 mx-auto mb-6" />
-            <h2 className="text-2xl font-medium text-gray-800 mb-4">Product Not Found</h2>
+            <h2 className="text-2xl font-medium text-gray-800 mb-4">Produit non trouvé</h2>
             <p className="text-gray-500 mb-6">{error}</p>
             <Link
-              to="/products"
+              to="/product"
               className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-md transition-colors duration-200 inline-flex items-center gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
-              Back to Products
+              Retour aux produits
             </Link>
           </div>
         </div>
@@ -116,9 +116,9 @@ export default function ViewProduct() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="py-3">
             <nav className="text-sm text-gray-600 mb-4">
-            <Link to="/">  <span className="hover:text-blue-600 cursor-pointer">Home</span></Link>
+            <Link to="/">  <span className="hover:text-blue-600 cursor-pointer">Accueil</span></Link>
               <span className="mx-2">›</span>
-              <Link to="/product" className="hover:text-blue-600 cursor-pointer">All Products</Link>
+              <Link to="/product" className="hover:text-blue-600 cursor-pointer">Tous les produits</Link>
               <span className="mx-2">›</span>
               {product.category && (
                 <>
@@ -169,12 +169,12 @@ export default function ViewProduct() {
                       {product.availability ? (
                         <>
                           <CheckCircle className="w-3 h-3" />
-                          In Stock
+                          En stock
                         </>
                       ) : (
                         <>
                           <XCircle className="w-3 h-3" />
-                          Out of Stock
+                          En rupture de stock
                         </>
                       )}
                     </div>
@@ -187,7 +187,7 @@ export default function ViewProduct() {
                 </div>
               </div>
               
-           
+            
             </div>
           </div>
           
@@ -209,7 +209,7 @@ export default function ViewProduct() {
                   <StarHalf className="w-5 h-5 fill-current" />
                 </div>
                 <span className="text-blue-600 text-sm hover:text-blue-700 hover:underline cursor-pointer">
-                  24 ratings
+                  24 avis
                 </span>
                 
                 {product.category && (
@@ -227,32 +227,32 @@ export default function ViewProduct() {
               <div className="border-t border-b border-gray-200 py-4 my-4">
                 <div className="flex items-baseline gap-2">
                   <span className="text-3xl font-medium text-gray-900">
-                    ${product.price || 99.99}
+                    {product.price || 99.99} TND
                   </span>
                   <span className="text-sm text-gray-500">
-                    + Free Shipping
+                    + Livraison Gratuite
                   </span>
                 </div>
                 
                 {/* Mock discount */}
                 <div className="mt-1 flex items-center gap-2">
                   <span className="text-sm text-gray-500 line-through">
-                    ${(parseFloat(product.price || 99.99) * 1.2).toFixed(2)}
+                    {(parseFloat(product.price || 99.99) * 1.2).toFixed(2)} TND
                   </span>
                   <span className="text-xs font-medium text-orange-700 bg-orange-100 px-1.5 py-0.5 rounded">
-                    Save 20%
+                    Économisez 20%
                   </span>
                 </div>
               </div>
               
               {/* Quick details */}
               <div>
-                <h3 className="font-medium text-gray-900 mb-2">About this item:</h3>
+                <h3 className="font-medium text-gray-900 mb-2">À propos de cet article :</h3>
                 <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
-                  <li>Premium quality materials ensure durability and long-lasting performance</li>
-                  <li>Easy to use design makes installation and maintenance simple</li>
-                  <li>Compatible with most standard systems and applications</li>
-                  <li>Backed by our satisfaction guarantee and customer support</li>
+                  <li>Les matériaux de qualité supérieure garantissent la durabilité et des performances durables</li>
+                  <li>La conception facile à utiliser simplifie l'installation et l'entretien</li>
+                  <li>Compatible avec la plupart des systèmes et applications standards</li>
+                  <li>Soutenu par notre garantie de satisfaction et notre support client</li>
                 </ul>
               </div>
             </div>
@@ -261,10 +261,10 @@ export default function ViewProduct() {
             <div className="bg-white border border-gray-200 rounded-lg p-6 mb-4">
               <div className="mb-4">
                 <span className="text-xl font-medium text-gray-900">
-                  ${product.price || 99.99}
+                  {product.price || 99.99} TND
                 </span>
                 <div className="text-sm text-blue-600 hover:text-blue-700 hover:underline cursor-pointer">
-                  FREE delivery available
+                  Livraison GRATUITE disponible
                 </div>
               </div>
               
@@ -272,19 +272,19 @@ export default function ViewProduct() {
                 {product.availability ? (
                   <div className="flex items-center gap-1">
                     <CheckCircle className="w-4 h-4" />
-                    <span>In Stock</span>
+                    <span>En stock</span>
                   </div>
                 ) : (
                   <div className="flex items-center gap-1">
                     <XCircle className="w-4 h-4" />
-                    <span>Out of Stock</span>
+                    <span>En rupture de stock</span>
                   </div>
                 )}
               </div>
               
               {/* Quantity selector */}
               <div className="mb-4">
-                <label className="text-sm text-gray-700 block mb-1">Quantity:</label>
+                <label className="text-sm text-gray-700 block mb-1">Quantité :</label>
                 <div className="flex items-center">
                   <button 
                     onClick={() => handleQuantityChange(-1)}
@@ -318,38 +318,37 @@ export default function ViewProduct() {
                   }`}
                 >
                   <ShoppingCart className="w-5 h-5" />
-                  Buy Now
+                  Acheter maintenant
                 </button>
                 
-            
+              
               </div>
               
               {/* Secure transaction */}
               <div className="mt-4 pt-4 border-t border-gray-200 text-sm text-gray-700">
                 <div className="flex items-center gap-1 mb-1">
                   <Shield className="w-4 h-4 text-blue-500" />
-                  <span className="font-medium">Secure transaction</span>
+                  <span className="font-medium">Transaction sécurisée</span>
                 </div>
                 
                 <div className="flex items-start gap-2 mt-3">
                   <Truck className="w-4 h-4 text-orange-500 mt-0.5" />
                   <div>
-                    <div className="font-medium">Fast delivery</div>
-                    <div className="text-gray-500">Usually ships within 2-3 business days</div>
+                    <div className="font-medium">Livraison rapide</div>
+                    <div className="text-gray-500">Expédié généralement sous 2-3 jours ouvrables</div>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-2 mt-3">
                   <Award className="w-4 h-4 text-blue-500 mt-0.5" />
                   <div>
-                    <div className="font-medium">Warranty</div>
-                    <div className="text-gray-500">1 year manufacturer warranty</div>
+                    <div className="font-medium">Garantie</div>
+                    <div className="text-gray-500">Garantie constructeur d'un an</div>
                   </div>
                 </div>
               </div>
             </div>
             
-           
             
           
           </div>
