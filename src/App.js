@@ -20,6 +20,7 @@ import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import ServicePage from "./pages/ServicePage";
 import Login from "./admin/login";
+import Panier from "./pages/pannier";
 
 function App() {
   return (
@@ -47,6 +48,8 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/services" element={<ServicePage />} />
+        <Route path="/panier" element={<Panier />} />
+
 
 
         {/* Default route */}

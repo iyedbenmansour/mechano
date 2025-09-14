@@ -362,7 +362,7 @@ function ProductList() {
                             to={`/product/${product.id}`}
                             className="inline-block bg-orange-500 hover:from-blue-700 hover:to-orange-600 text-white text-sm font-medium px-4 py-2 rounded-md transition-all duration-200 w-full text-center shadow-md hover:shadow-lg"
                           >
-                            Voir les détails
+                            Acheter maintenant
                           </Link>
                         </div>
                       </div>

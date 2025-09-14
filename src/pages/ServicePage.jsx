@@ -112,20 +112,20 @@ export default function ServicePage() {
     {
       icon: <Phone className="w-5 h-5" />,
       title: "Appelez-nous",
-      info: "+1 (555) 123-4567",
-      action: () => window.location.href = "tel:+15551234567"
+      info: "28 980 943",
+      action: () => window.location.href = "tel:+216 28 980 943"
     },
     {
       icon: <Mail className="w-5 h-5" />,
       title: "Envoyez-nous un Email",
-      info: "service@Silad.com",
-      action: () => window.location.href = "mailto:service@Silad.com"
+      info: "siladlubrifiants@gmail.com",
+      action: () => window.location.href = "mailto:siladlubrifiants@gmail.com"
     },
     {
       icon: <MapPin className="w-5 h-5" />,
       title: "Rendez-nous Visite",
-      info: "123 Precision Drive, Metropolis",
-      action: () => window.open("https://maps.google.com/?q=123+Precision+Drive+Metropolis", "_blank")
+      info: "9042 jebel jloud, Tunis, Tunisia",
+      action: () => window.open("https://maps.app.goo.gl/ahDMmxPZiFW7Ef4P8", "_blank")
     }
   ];
 
@@ -137,7 +137,7 @@ export default function ServicePage() {
       <section
         id="hero"
         className="relative min-h-screen flex items-center bg-gray-900 bg-cover bg-center"
-        style={{ backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVdFWToo8o2Gn3Pc0O-iYF8nVChyOCQyFYstSnKKaw2LoJuxGrPSM5Z1H3gp9s3UqWwuM&usqp=CAU')" }}
+        style={{ backgroundImage: "url('/bgs.jpg')" }}
       >
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-800 to-transparent opacity-80"></div>

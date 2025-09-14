@@ -51,19 +51,19 @@ const services = [
 
 const testimonials = [
   {
-    name: "Alex Johnson",
+    name: "Ahmed ben yedder",
     role: "Propriétaire d'entreprise",
     rating: 5,
     comment: "L'équipe de Silad a été incroyablement professionnelle et compétente. Ils ont résolu mon problème de moteur rapidement et le prix était très raisonnable. Hautement recommandé !"
   },
   {
-    name: "Maria Smith",
+    name: "Mohamed ali",
     role: "Gestionnaire de flotte",
     rating: 5,
     comment: "Je confie toujours les véhicules de mon entreprise ici pour l'entretien. Ils sont honnêtes, efficaces et font toujours un effort supplémentaire. Excellent service client !"
   },
   {
-    name: "David Chen",
+    name: "BEN mustapha",
     role: "Propriétaire de voiture de luxe",
     rating: 5,
     comment: "Service rapide et fiable. J'avais un problème électrique complexe qu'ils ont pu diagnostiquer et résoudre alors que d'autres garages n'y arrivaient pas. Merci, Silad !"
@@ -159,20 +159,20 @@ export default function Home() {
     {
       icon: <Phone className="w-5 h-5" />,
       title: "Appelez-nous",
-      info: "+1 (555) 123-4567",
-      subtitle: "Lun-Ven 8h-18h"
+      info: "+216 28 980 943",
+      subtitle: "Lun-Sam 8h-18h"
     },
     {
       icon: <Mail className="w-5 h-5" />,
       title: "Envoyez-nous un e-mail",
-      info: "service@Silad.com",
+      info: "siladlubrifiants@gmail.com",
       subtitle: "Réponse 24/7"
     },
     {
       icon: <MapPin className="w-5 h-5" />,
       title: "Visitez-nous",
-      info: "123 Precision Drive, Metropolis",
-      subtitle: "Emplacement en centre-ville"
+      info: "19042 jebel jloud, Tunis, Tunisia",
+  
     }
   ];
 
@@ -265,7 +265,7 @@ className="border border-white hover:border-orange-400 hover:text-orange-400 tex
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative rounded-lg overflow-hidden shadow-lg">
               <img 
-                src="https://t3.ftcdn.net/jpg/00/34/18/76/360_F_34187663_IB1vXgpqtRnnXkWfwmRsjNeLc2Ou2UTA.jpg" 
+                src="https://media.istockphoto.com/id/1306896540/photo/truck-driver.jpg?s=612x612&w=0&k=20&c=jzaX_gShRnz1lLHuh_B5_idVLMcJ1HPfDW3OTuRwDyU=" 
                 alt="Atelier de réparation automobile" 
                 className="w-full h-full object-cover"
               />
@@ -407,7 +407,7 @@ className="border border-white hover:border-orange-400 hover:text-orange-400 tex
                         onChange={handleChange}
                         required
                         className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                        placeholder="+1 (555) 123-4567"
+                        placeholder="+216 24425908 "
                       />
                     </div>
                   </div>

@@ -67,9 +67,9 @@ export default function ContactUs() {
   };
 
   const contactInfo = [
-    { icon: <Phone className="w-8 h-8" />, title: "Appelez-nous", info: "+1 (555) 123-4567", subtitle: "Lun-Ven 8h-18h" },
-    { icon: <Mail className="w-8 h-8" />, title: "Écrivez-nous", info: "info@mechpro.com", subtitle: "Réponse sous 24h" },
-    { icon: <MapPin className="w-8 h-8" />, title: "Visitez-nous", info: "123 Zone Industrielle", subtitle: "Centre-ville" }
+    { icon: <Phone className="w-8 h-8" />, title: "Appelez-nous", info: "28 980 943", subtitle: "Lun-Ven 8h-18h" },
+    { icon: <Mail className="w-8 h-8" />, title: "Écrivez-nous", info: "siladlubrifiants@gmail.com", subtitle: "Réponse sous 24h" },
+    { icon: <MapPin className="w-8 h-8" />, title: "Visitez-nous", info: "9042 jebel jloud, Tunis, Tunisia", subtitle: "Centre-ville" }
   ];
 
   const features = [
